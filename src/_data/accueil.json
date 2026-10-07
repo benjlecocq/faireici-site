@@ -1,0 +1,30 @@
+{
+  "seo_titre": "fair[e]ici - Conseil en développement territorial et attractivité",
+  "seo_description": "Cabinet de conseil en développement territorial à Lyon. Nous accompagnons collectivités et acteurs économiques : résilience économique, attractivité, offre d'accueil, programmation urbaine, ESS.",
+  "hero_surtitre": "Développement territorial",
+  "hero_titre": "Révéler le potentiel des territoires et façonner leur [avenir].",
+  "hero_texte": "Les territoires sont confrontés à de profondes mutations économiques, sociales et environnementales qui imposent de nouvelles façons de penser et d'agir.",
+  "hero_bouton": "Parlons de votre projet",
+  "carrousel": [
+    {
+      "image": "/assets/vue-territoire.jpg",
+      "alt": "Vue aérienne d'un territoire - village, champs et rivière"
+    }
+  ],
+  "role_surtitre": "Notre rôle",
+  "role_titre": "Nous faisons émerger des projets *utiles*, ancrés dans les réalités locales et porteurs de transformations concrètes.",
+  "role_texte": "**fair[e]ici** accompagne la définition de stratégies et la mise en oeuvre d'initiatives qui renforcent l'attractivité, la résilience et la capacité d'innovation des territoires. De la première intuition jusqu'à la réalisation concrète, nous mettons en mouvement les collectivités, les acteurs économiques et les porteurs de projets. Ensemble, nous faisons émerger des réponses durables et adaptées à chaque contexte.",
+  "contexte_surtitre": "Le contexte",
+  "contexte_titre": "Les territoires changent.\nLes modèles aussi.",
+  "contexte_titre2": "Nous aidons les acteurs locaux à construire de nouveaux [équilibres].",
+  "contexte_texte": "Longtemps fondé sur l'étalement urbain, la spécialisation économique ou la compétition des territoires, le développement local doit se réinventer et intégrer les impératifs de transition.",
+  "contexte_liste": [
+    "Attractivité & sobriété",
+    "Développement économique & préservation des ressources",
+    "Compétitivité & cohésion sociale",
+    "Ambition & contraintes budgétaires"
+  ],
+  "expertises_surtitre": "Nos expertises",
+  "expertises_titre": "Cinq leviers pour\ntransformer un territoire.",
+  "expertises_texte": "Nous intervenons comme facilitateur, concepteur et accélérateur de projets - de la stratégie à la réalisation concrète."
+}

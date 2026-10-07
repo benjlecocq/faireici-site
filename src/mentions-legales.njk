@@ -1,0 +1,110 @@
+---
+permalink: "mentions-legales.html"
+navKey: ""
+bodyPage: "legal"
+---
+{% extends "base.njk" %}
+{% set seo = { titre: "Mentions légales - fair[e]ici", description: "Mentions légales et politique de protection des données personnelles du site fair[e]ici." } %}
+{% block style %}{% raw %}
+.contact-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(36px,6vw,90px); align-items: start; }
+.intentions { display: flex; flex-wrap: wrap; gap: 12px; }
+.chip { font-family: var(--font-mono); font-size: 0.84rem; letter-spacing: 0.02em; color: var(--paper-dim); border: 1px solid var(--line); border-radius: 999px; padding: 0.7em 1.15em; cursor: pointer; transition: border-color .25s var(--ease), color .25s var(--ease), background .25s var(--ease); user-select: none; display: inline-flex; align-items: center; gap: 8px; }
+.chip::before { content: "+"; color: var(--accent); transition: transform .25s var(--ease); }
+.chip:hover { border-color: var(--accent); color: var(--paper); }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+.chip[aria-pressed="true"]::before { content: "✓"; color: #fff; }
+
+.field { display: grid; gap: 8px; margin-bottom: 20px; }
+.field label { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.field label .req { color: var(--accent); }
+.field input, .field textarea {
+  font-family: var(--font-body); font-size: 1rem; color: var(--paper);
+  background: var(--ink-2); border: 1px solid var(--line); border-radius: 10px;
+  padding: 14px 16px; width: 100%; transition: border-color .25s var(--ease), background .25s var(--ease);
+}
+.field textarea { resize: vertical; min-height: 130px; }
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); background: var(--ink-3); }
+.field input::placeholder, .field textarea::placeholder { color: var(--muted); }
+.field.invalid input, .field.invalid textarea { border-color: var(--accent); }
+.field .err { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.04em; color: var(--accent); display: none; }
+.field.invalid .err { display: block; }
+.row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.form-submit { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 8px; }
+.form-note { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.04em; color: var(--muted); }
+
+.form-success { display: none; border: 1px solid var(--accent); border-radius: 16px; padding: clamp(28px,4vw,48px); background: var(--ink-2); }
+.form-success.show { display: block; }
+.form-card.hide { display: none; }
+.form-success .tick { width: 52px; height: 52px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; color: #fff; font-size: 1.4rem; margin-bottom: 20px; }
+
+.contact-info { display: grid; gap: 4px; }
+.contact-info a.big { font-family: var(--font-body); font-weight: 500; font-size: clamp(1rem,1.15vw,1.1rem); letter-spacing: 0; color: var(--paper-dim); transition: color .25s var(--ease); }
+.contact-info a.big:hover { color: var(--accent); }
+.contact-addr { font-family: var(--font-body); font-size: clamp(1rem,1.15vw,1.1rem); line-height: 1.5; color: var(--paper-dim); max-width: 22ch; }
+
+@media (max-width: 900px){ .contact-grid { grid-template-columns: 1fr; } .row-2 { grid-template-columns: 1fr; } }
+.legal{max-width:760px;}
+.legal h2{font-family:var(--font-mono);font-weight:400;font-size:0.74rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin:clamp(32px,4vw,44px) 0 12px;}
+.legal h2:first-child{margin-top:0;}
+.legal p,.legal li{color:var(--paper-dim);font-size:1rem;line-height:1.65;}
+.legal p + p{margin-top:0.6em;}
+.legal ol,.legal ul{padding-left:1.2em;display:grid;gap:8px;margin-top:8px;}
+.legal a{color:var(--paper);border-bottom:1px solid var(--line);}
+.legal a:hover{color:var(--accent);border-color:var(--accent);}
+.legal strong{color:var(--paper);font-weight:500;}
+{% endraw %}{% endblock %}
+{% block main %}{% raw %}
+<section class="page-hero wrap">
+  <p class="eyebrow">Informations légales</p>
+  <h1 class="page-hero__title mt-s">Mentions légales</h1>
+</section>
+<section class="section section--tight">
+  <div class="wrap legal">
+    <h2>Éditeur du site</h2>
+    <p>Le présent site est la propriété de la Société Coopérative et Participative <strong>FAIRE ICI</strong> - SCOP SARL au capital de 75 000 €, immatriculée sous le numéro 850 013 897.</p>
+    <p><strong>Siège social :</strong> 334 Route de Montmay l'Étang, 69430 Quincié-en-Beaujolais<br><strong>Établissement secondaire :</strong> 20 Rue Paul Cazeneuve, 69008 Lyon<br><strong>Téléphone :</strong> <a href="tel:+33624731785">06 24 73 17 85</a><br><strong>Email :</strong> <a href="mailto:faireici@faireici.com">faireici@faireici.com</a></p>
+    <p><strong>Directeur de la publication :</strong> Vincent Lecomte</p>
+
+    <h2>Hébergement</h2>
+    <p>Netlify, Inc. - 512 2nd Street, Suite 200, San Francisco, CA 94107, États-Unis - <a href="https://www.netlify.com" target="_blank" rel="noopener">www.netlify.com</a></p>
+
+    <h2>Conditions d'utilisation du site</h2>
+    <ol>
+      <li>FAIRE ICI n'autorise la visualisation du présent site qu'à titre personnel et privé. Toute copie des informations contenues dans ce site ne peut être faite qu'à titre d'information et est strictement réservée à un usage privé au sens de l'article L 122-5 2° du Code de la Propriété Intellectuelle. Toute autre utilisation ou reproduction non expressément visée aux présentes est interdite.</li>
+      <li>La création d'un lien hypertexte vers le présent site est autorisée uniquement vers l'adresse de la page d'accueil, à l'exclusion de toute autre adresse.</li>
+      <li>Les informations contenues dans ce site ne sont pas exhaustives et vous sont données à titre indicatif. Malgré les efforts de FAIRE ICI, elles peuvent être partielles, périmées ou comporter des inexactitudes. FAIRE ICI ne vous garantit pas l'exactitude, l'exhaustivité, l'adéquation ou le fonctionnement du présent site ou de l'information qu'il contient. Les photos sont données à titre non contractuel.</li>
+      <li>FAIRE ICI n'assume aucune responsabilité relative aux informations contenues dans le présent site. Elle décline toute responsabilité découlant notamment de toute erreur et/ou omission pouvant résulter de tout dommage direct ou indirect lié au crédit que vous accordez à ces informations, à l'utilisation que vous pourriez en faire et à toute décision que vous seriez susceptibles de prendre en conséquence.</li>
+      <li>FAIRE ICI n'assume aucune obligation de mise à jour ou de correction des informations disponibles sur ce site et se réserve le droit d'en modifier le contenu à tout moment et sans préavis.</li>
+      <li>En utilisant le présent site, vous acceptez les conditions d'utilisation précitées et vous vous engagez à les respecter.</li>
+    </ol>
+
+    <h2>Disponibilité des services</h2>
+    <p>Les meilleurs efforts sont fournis pour maintenir l'accès au site. Cependant, l'accès au site peut être interrompu temporairement ou définitivement, notamment pour des raisons juridiques, techniques ou de maintenance. Aucune indemnité ne peut être octroyée par FAIRE ICI au titre d'une indisponibilité du site, qu'elle soit temporaire ou définitive.</p>
+
+    <h2>Sécurité</h2>
+    <p>Il appartient à l'utilisateur d'utiliser tous les moyens de sécurité dont il dispose pour préserver la confidentialité des informations échangées. FAIRE ICI ne saurait être tenue pour responsable des conséquences de la divulgation, même involontaire, des informations échangées ou de la non-utilisation par l'utilisateur des moyens de sécurité.</p>
+
+    <h2>Territorialité</h2>
+    <p>L'internaute reconnaît que l'utilisation du site est régie par la loi française et relève de la compétence des juges français.</p>
+
+    <h2>Informatique et libertés</h2>
+    <p>Les informations susceptibles d'être collectées sur le présent site sont destinées à la demande d'information. Conformément à la loi Informatique et Libertés du 6 janvier 1978 modifiée, vous disposez d'un droit d'accès, de communication, de rectification et de suppression des données qui vous concernent. Vous pouvez exercer ce droit en écrivant à : <a href="mailto:faireici@faireici.com">faireici@faireici.com</a>.</p>
+
+    <h2>Politique de protection des données personnelles</h2>
+    <p>Ce site recueille des données personnelles de ses utilisateurs et se conforme aux législations en vigueur (loi pour la confiance dans l'économie numérique, loi Informatique et Libertés, et Règlement Général sur la Protection des Données - RGPD n° 2016/679).</p>
+    <p>Données personnelles collectées aux fins suivantes :</p>
+    <ul>
+      <li><strong>Formulaire de contact :</strong> données collectées dans un but de gestion administrative et commerciale (nom, organisation, adresse email, contenu du message).</li>
+    </ul>
+    <p>Les destinataires des données personnelles sont les associés et salariés de FAIRE ICI et ses partenaires techniques.</p>
+    <p>La durée de conservation des données est fixée comme suit : s'il existe une relation commerciale, les données sont conservées de manière active durant toute la durée de cette relation et pendant 10 ans après celle-ci. En l'absence de relation commerciale, elles sont supprimées dans un délai de 2 ans à compter de leur collecte.</p>
+    <p>L'utilisateur peut exercer son droit d'accès aux données le concernant, de rectification, d'effacement, demander une limitation du traitement, s'y opposer ou en demander la portabilité en contactant le responsable du traitement : <a href="mailto:faireici@faireici.com">faireici@faireici.com</a>.</p>
+
+    <h2>Droit d'auteur et propriété intellectuelle</h2>
+    <p>Les marques, logos et plus généralement tous les éléments de propriété intellectuelle sont la propriété de leur auteur et protégés à ce titre. Toute utilisation ou reproduction est interdite. Les informations contenues sur ce site doivent être utilisées à des fins strictement personnelles ; toute utilisation, reproduction, copie ou diffusion à des fins commerciales est interdite.</p>
+
+    <h2>Crédits</h2>
+    <p>Photographies : FAIRE ICI, <a href="https://www.pexels.com" target="_blank" rel="noopener">Pexels</a>, <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>. Polices : <a href="https://fonts.google.com" target="_blank" rel="noopener">Google Fonts</a>.</p>
+  </div>
+</section>
+{% endraw %}{% endblock %}

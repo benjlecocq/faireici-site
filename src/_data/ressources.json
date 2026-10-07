@@ -1,0 +1,60 @@
+{
+  "seo_titre": "L’équipe - Vincent Lecomte et Benjamin Lecocq - fair[e]ici",
+  "seo_description": "fair[e]ici est animé par Vincent Lecomte et Benjamin Lecocq, deux associés aux expertises complémentaires en développement local et développement économique territorial.",
+  "surtitre": "Ressources",
+  "titre": "Un duo, des expertises [complémentaires].",
+  "intro_phrase": "fair[e]ici est animé par un duo d'associés aux expériences et compétences fortement [complémentaires].",
+  "intro_texte": "Du développement local à l'entrepreneuriat, de l'innovation sociale au développement économique territorial : deux regards qui se croisent au service des territoires et de leurs acteurs.",
+  "associes": [
+    {
+      "nom": "Vincent Lecomte",
+      "etiquette": "01 - Fondateur",
+      "role": "DÉVELOPPEMENT LOCAL. ENTREPRENEURIAT. ESS",
+      "photo": "/assets/vincent.jpeg",
+      "depuis": "Fondateur Associé · depuis 2019",
+      "texte": "Spécialiste du développement local et de l'entrepreneuriat, Vincent a créé **fair[e]ici** en 2019. Il porte un attachement particulier aux territoires dits fragiles - territoires de montagne, espaces ruraux, petites villes - avec une conviction forte : ces territoires disposent de ressources et de potentiels propres, qu'il s'agit d'identifier, de valoriser et de mettre en mouvement.\n\nIl place au cœur de ses interventions les enjeux d'ancrage local et de développement durable. Spécialiste du soutien à l'entrepreneuriat et à l'innovation sociale, il accompagne les territoires dans la construction de nouveaux modèles économiques, en phase avec les impératifs de transition écologique et sociale.\n\nSa démarche associe concertation et co-construction des stratégies, garantissant ainsi que les orientations définies se traduisent en dynamiques économiques tangibles et durables."
+    },
+    {
+      "nom": "Benjamin Lecocq",
+      "etiquette": "02 - Associé",
+      "role": "DÉVELOPPEMENT ÉCONOMIQUE.",
+      "photo": "/assets/benjamin.jpeg",
+      "depuis": "Associé · depuis 2021",
+      "texte": "Benjamin Lecocq rejoint Fair[e] Ici en 2021. Expert des problématiques du développement économique territorial, il propose son appui dans la définition et la mise en œuvre de projets de développement économique. Il accompagne les acteurs de l'aménagement du territoire et les opérateurs de l'immobilier dédié aux activités économiques, auprès d'acteurs publics comme privés.\n\nSes contributions visent le développement de solutions d'accueil, de services et d'animation adaptées aux enjeux des territoires, des entreprises et des réseaux d'acteurs - et la création d'une valeur ajoutée durable dans les territoires.\n\nPour ce faire, il questionne les besoins en profondeur pour dépasser les bases des cahiers des charges ; il s'appuie sur les initiatives locales pour catalyser les dynamiques existantes ; il explore dans toutes leurs dimensions les potentialités des lieux et des acteurs, pour définir des solutions à la fois innovantes et opérantes."
+    }
+  ],
+  "partenaires_surtitre": "Nos partenaires",
+  "partenaires_titre": "Un réseau d'experts mobilisés selon les besoins de chaque mission.",
+  "partenaires": [
+    {
+      "nom": "Espelia",
+      "specialite": "Conseil pour la performance publique",
+      "url": "https://www.espelia.fr/",
+      "logo": "/assets/partners/espelia.png"
+    },
+    {
+      "nom": "360",
+      "specialite": "Programmation et urbanisme",
+      "url": "https://www.360-agence.fr/",
+      "logo": "/assets/partners/360.jpg"
+    },
+    {
+      "nom": "AID",
+      "specialite": "Planification",
+      "url": "https://aidobservatoire.fr/",
+      "logo": "/assets/partners/aid.png"
+    },
+    {
+      "nom": "Urban Projects",
+      "specialite": "Urbanisme",
+      "url": "https://urbanprojects.fr/",
+      "logo": "/assets/partners/urban-projects.png"
+    },
+    {
+      "nom": "Alpicité",
+      "specialite": "Urbanisme, paysage, environnement",
+      "url": "https://alpicite.fr/",
+      "logo": "/assets/partners/alpicite.png"
+    }
+  ]
+}

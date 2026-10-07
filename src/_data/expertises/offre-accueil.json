@@ -1,0 +1,20 @@
+{
+  "page": "expertise-offre-accueil",
+  "nom": "Offre d'accueil territoriale",
+  "nom_long": "Offre d'accueil territoriale",
+  "description": "Concevoir des solutions d'accueil et des services adaptés aux besoins, tout en respectant les ressources locales.",
+  "seo_titre": "Offre d'accueil territoriale et stratégie foncière - fair[e]ici",
+  "seo_description": "Stratégies foncières et immobilières, recyclage foncier, réactivation de friches, mutualisation des espaces : concilier développement d'activités et préservation des ressources.",
+  "titre": "Concilier [attractivité] et sobriété",
+  "constat": "Les modèles de développement extensifs ne sont plus soutenables.",
+  "texte": "Notre approche vise à répondre aux attentes des acteurs économiques tout en maitrisant l’usage du foncier et l'impact sur les ressources. Elle privilégie des solutions fondées sur la requalification de l'existant, la mutualisation des espaces et l’intensification des usages. Elle pose les bases d’un modèle de développement plus vertueux, en phase avec les enjeux d'adaptation au changement climatique.",
+  "image": "/assets/friche.jpg",
+  "image_alt": "Ancienne halle industrielle en brique réhabilitée avec de grandes verrières contemporaines",
+  "ambition": "Conjuguer développement d'activités et préservation des ressources",
+  "actions": [
+    "Élaborer des stratégies foncières et immobilières",
+    "Recycler et requalifier les sites en mutation",
+    "Réactiver les friches",
+    "Intensifier les usages, développer les services et mutualiser les espaces"
+  ]
+}

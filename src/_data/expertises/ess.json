@@ -1,0 +1,20 @@
+{
+  "page": "expertise-ess",
+  "nom": "Entrepreneuriat & ESS",
+  "nom_long": "Entrepreneuriat, ESS & innovation sociale",
+  "description": "Soutenir les initiatives à impacts qui créent à la fois de l'activité, de l'emploi et de nouvelles réponses aux besoins locaux.",
+  "seo_titre": "Entrepreneuriat, ESS et innovation sociale dans les territoires - fair[e]ici",
+  "seo_description": "Dispositifs d'accompagnement, feuilles de route thématiques, mise en réseau : soutenir les initiatives à impact, de leur émergence à leur changement d'échelle.",
+  "titre": "Soutenir les initiatives qui font [avancer] les territoires",
+  "constat": "Les transformations les plus durables naissent souvent d'initiatives locales.",
+  "texte": "Soutenir l’entrepreneuriat et accompagner les innovations sociales au cœur des territoires, c’est favoriser la création d’emplois et de richesses. C’est aussi permettre le développement de réponses à des besoins économiques, sociaux et environnementaux non ou mal couverts localement.\n\nNos interventions auprès des collectivités et des réseaux d’accompagnement visent à renforcer l’offre de services ou à renouveler les modes de faire en faveur des initiatives à impact, de leur émergence à leur changement d’échelle.",
+  "image": "/assets/atelier.jpeg",
+  "image_alt": "Tiers-lieu collaboratif aménagé en bois clair dans une ancienne halle industrielle",
+  "ambition": "Créer un environnement favorable à l'émergence, à la structuration et au développement des initiatives à impact.",
+  "actions": [
+    "Concevoir des dispositifs d'accompagnement et d'aides",
+    "Élaborer des feuilles de route thématiques",
+    "Mettre en réseau les acteurs et favoriser les coopérations",
+    "Répondre aux besoins non couverts par l'entrepreneuriat de territoire"
+  ]
+}

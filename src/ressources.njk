@@ -1,0 +1,93 @@
+---
+permalink: "ressources.html"
+navKey: "ressources"
+bodyPage: "ressources"
+---
+{% extends "base.njk" %}
+{% set seo = { titre: ressources.seo_titre, description: ressources.seo_description } %}
+{% block style %}{% raw %}
+/* intro duo */
+.duo-intro { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px,5vw,72px); align-items: start; }
+.duo-intro .statement { color: var(--paper); }
+.duo-intro__body p { color: var(--paper-dim); font-size: 1.0625rem; line-height: 1.6; }
+
+/* profile */
+.profile { display: grid; grid-template-columns: 0.62fr 1.38fr; gap: clamp(32px,5vw,80px); align-items: center; }
+.profile + .profile { margin-top: clamp(48px,6vw,96px); }
+.profile--flip { grid-template-columns: 1.38fr 0.62fr; }
+.profile--flip .profile__media { order: 2; justify-self: end; }
+.profile__media { position: relative; width: 100%; max-width: 340px; }
+.profile__media .ph { aspect-ratio: 4/5; border-radius: 8px; overflow: hidden; background-image: none; }
+.profile__media .ph::after { display: none; }
+.profile__media img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.02); }
+.profile__media .tagnum { position: absolute; top: 16px; left: 16px; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; color: var(--paper); background: rgba(13,13,14,0.6); backdrop-filter: blur(4px); padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); }
+.profile__name { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.9rem,3.6vw,2.9rem); letter-spacing: -0.025em; line-height: 1; }
+.profile__role { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-top: 12px; }
+.profile__body { margin-top: clamp(18px,2vw,26px); }
+.profile__body p { color: var(--paper-dim); font-size: 1.0625rem; line-height: 1.6; }
+.profile__body p + p { margin-top: 0.5em; }
+.profile__since { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.08em; color: var(--muted); margin-top: 18px; display: inline-flex; align-items: center; gap: 8px; }
+.profile__since::before { content: ""; width: 22px; height: 1px; background: var(--accent); }
+
+@media (max-width: 860px){
+  .duo-intro, .profile { grid-template-columns: 1fr; }
+  .profile--flip .profile__media { order: 0; margin-left: 0; }
+  .profile__media { max-width: 300px; }
+}
+.partners{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;}
+.partner{flex:0 0 190px;}
+.partner{display:flex;flex-direction:column;gap:6px;padding:16px;border:1px solid var(--line);border-radius:12px;background:var(--ink-2);transition:border-color .25s var(--ease),transform .3s var(--ease);}
+.partner:hover{border-color:var(--accent);transform:translateY(-2px);}
+.partner__logo{height:84px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:8px;overflow:hidden;padding:10px 12px;box-sizing:border-box;}
+.partner__logo img{display:block;width:auto;height:auto;max-width:100%;max-height:64px;object-fit:contain;}
+.partner__logo--dark{background:#141416;border:1px solid var(--line);}
+.partner__ph{font-family:var(--font-display);font-weight:600;font-size:0.95rem;color:#2b2825;text-align:center;}
+.partner__name{font-family:var(--font-display);font-weight:500;font-size:1.02rem;color:var(--paper);}
+.partner__spec{font-size:0.88rem;line-height:1.4;color:var(--paper-dim);}
+.partner__url{margin-top:auto;padding-top:6px;font-family:var(--font-mono);font-size:0.7rem;color:var(--muted);}
+.partner:hover .partner__url{color:var(--accent);}
+@media (max-width:600px){.partner{flex-basis:140px;}}
+{% endraw %}{% endblock %}
+{% block main %}
+<section class="page-hero wrap">
+<p class="eyebrow" data-reveal>{{ ressources.surtitre }}</p>
+<h1 class="page-hero__title mt-s" data-reveal data-reveal-delay="1">{{ ressources.titre | fi | safe }}</h1>
+</section>
+<section class="section section--tight">
+<div class="wrap duo-intro">
+<div data-reveal><p class="statement">{{ ressources.intro_phrase | fi | safe }}</p></div>
+<div class="duo-intro__body" data-reveal data-reveal-delay="1">{{ ressources.intro_texte | paras | safe }}</div>
+</div>
+</section>
+<div class="wrap"><hr class="hairline"></div>
+<section class="section">
+<div class="wrap">{% for a in ressources.associes %}
+<article class="profile{% if loop.index is even %} profile--flip{% endif %}" data-reveal>
+<div class="profile__media">
+{% if a.etiquette %}<span class="tagnum">{{ a.etiquette }}</span>{% endif %}
+<div class="ph"><img src="{{ a.photo }}" alt="Portrait de {{ a.nom }}"></div>
+</div>
+<div class="profile__text">
+<h2 class="profile__name">{{ a.nom }}</h2>
+<p class="profile__role">{{ a.role }}</p>
+<div class="profile__body">{{ a.texte | paras | safe }}</div>
+{% if a.depuis %}<span class="profile__since">{{ a.depuis }}</span>{% endif %}
+</div>
+</article>{% endfor %}
+</div>
+</section>
+<section class="section section--tight">
+<div class="wrap">
+<p class="eyebrow" data-reveal>{{ ressources.partenaires_surtitre }}</p>
+<h2 class="h-lg mt-s" data-reveal style="max-width:30ch">{{ ressources.partenaires_titre | fi | safe }}</h2>
+<div class="partners mt-m" data-reveal>{% for p in ressources.partenaires %}
+<a class="partner" href="{{ p.url }}" target="_blank" rel="noopener">
+<span class="partner__logo">{% if p.logo %}<img src="{{ p.logo }}" alt="Logo {{ p.nom }}">{% endif %}</span>
+<span class="partner__name">{{ p.nom }}</span>
+<span class="partner__spec">{{ p.specialite }}</span>
+<span class="partner__url">{{ p.url | domain }} ↗</span>
+</a>{% endfor %}
+</div>
+</div>
+</section>
+{% endblock %}

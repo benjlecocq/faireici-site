@@ -1,0 +1,67 @@
+---
+pagination:
+  data: "exp"
+  size: 1
+  alias: "e"
+permalink: "{{ e.page }}.html"
+navKey: "expertises"
+bodyPage: "expertise"
+---
+{% extends "base.njk" %}
+{% set seo = { titre: e.seo_titre, description: e.seo_description } %}
+{% set n = exp.length %}{% set i = pagination.pageNumber %}
+{% set prev = exp[(i + n - 1) % n] %}{% set next = exp[(i + 1) % n] %}
+{% block style %}{% raw %}
+.exp-intro { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: clamp(32px,6vw,84px); align-items: start; }
+.exp-intro__body p { color: var(--paper-dim); font-size: 1.0625rem; line-height: 1.6; }
+.exp-intro__body p + p { margin-top: 0.55em; }
+.exp-media .ph { border-radius: 6px; }
+@media (max-width: 900px){ .exp-intro { grid-template-columns: 1fr; } }
+{% endraw %}
+{% if e.key == 'attractivite' %}.exp-media .ph img{filter:saturate(0.9)}{% endif %}
+{% if e.key == 'ess' %}.exp-media .ph img{filter:contrast(1.06) saturate(1.04) brightness(1.01)}{% endif %}{% endblock %}
+{% block main %}
+<section class="page-hero wrap">
+<div class="crumb" data-reveal><a href="/">Accueil</a><span class="sep">/</span><a href="/{{ exp[0].page }}.html">Expertises</a><span class="sep">/</span><span>{{ e.nom }}</span></div>
+<h1 class="page-hero__title mt-s" data-reveal data-reveal-delay="1">{{ e.titre | fi | safe }}</h1>
+</section>
+<section class="section section--tight">
+<div class="wrap exp-intro">
+<div data-reveal>
+<p class="eyebrow">Le constat</p>
+<p class="statement mt-s">{{ e.constat | fi | safe }}</p>
+</div>
+<div class="exp-intro__body" data-reveal data-reveal-delay="1">{{ e.texte | paras | safe }}</div>
+</div>
+{% if e.image %}<div class="wrap exp-media mt-l" data-reveal>
+<div class="ph ph--wide ph--filled"><img src="{{ e.image }}" alt="{{ e.image_alt }}"></div>
+</div>{% endif %}
+</section>
+<section class="section">
+<div class="wrap">
+<div class="split split--top">
+<div data-reveal>
+<p class="eyebrow">Notre ambition</p>
+<h2 class="h-lg mt-s" style="max-width:24ch">{{ e.ambition | fi | safe }}</h2>
+</div>
+<div data-reveal data-reveal-delay="1">
+<p class="eyebrow">Ce que nous faisons concrètement</p>
+<ul class="context-list mt-s">{% for li in e.actions %}
+<li>{{ li | fi | safe }}</li>{% endfor %}
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="section--tight">
+<div class="wrap">
+<div class="exp-nav" data-reveal>
+<a class="prev" href="/{{ prev.page }}.html"><span class="k">← {{ prev.num }} - Précédent</span><span class="t">{{ prev.nom_long or prev.nom }}</span></a>
+<a class="next" href="/{{ next.page }}.html"><span class="k">{{ next.num }} - Suivant →</span><span class="t">{{ next.nom_long or next.nom }}</span></a>
+</div>
+</div>
+</section>
+<section class="section center">
+<div class="wrap"><div data-reveal><a href="/contact.html" class="btn btn--solid">Parlons de votre projet <span class="arrow">→</span></a></div></div>
+</section>
+{% endblock %}

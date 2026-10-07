@@ -1,0 +1,67 @@
+---
+permalink: "conviction.html"
+navKey: "conviction"
+bodyPage: "conviction"
+---
+{% extends "base.njk" %}
+{% set seo = { titre: conviction.seo_titre, description: conviction.seo_description } %}
+{% block style %}{% raw %}
+.role-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(32px,6vw,90px); align-items: start; }
+.conv-intro { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px,5vw,72px); }
+.conv-intro p { color: var(--paper-dim); font-size: 1.0625rem; line-height: 1.6; }
+@media (max-width: 900px){ .role-grid, .conv-intro { grid-template-columns: 1fr; } }
+
+/* expertises-style list (reprise de l'accueil) */
+.exp-list { }
+.exp-row { display: grid; grid-template-columns: 40px 1fr auto; gap: clamp(12px,1.8vw,26px); align-items: center; padding: clamp(11px,1.3vw,15px) clamp(12px,1.6vw,18px); border-radius: 12px; position: relative; }
+.exp-row + .exp-row { margin-top: 2px; }
+.exp-row__cell { min-width: 0; display: flex; flex-direction: column; }
+.exp-row__title { display: block; font-family: var(--font-display); font-weight: 500; font-size: clamp(1.02rem, 1.35vw, 1.22rem); letter-spacing: -0.02em; line-height: 1.12; }
+.exp-row__desc { display: block; color: var(--muted); max-width: 60ch; font-size: clamp(0.84rem,0.95vw,0.92rem); line-height: 1.45; margin-top: 3px; }
+.exp-row .num { align-self: start; padding-top: 0.2em; }
+{% endraw %}{% endblock %}
+{% block main %}
+<section class="page-hero wrap">
+<p class="eyebrow" data-reveal>{{ conviction.surtitre }}</p>
+<h1 class="page-hero__title mt-s" data-reveal data-reveal-delay="1">{{ conviction.titre | fi | safe }}</h1>
+</section>
+<section class="section section--tight">
+<div class="wrap conv-intro">
+<div data-reveal><h2 class="h-lg">{{ conviction.intro_titre | fi | safe }}</h2></div>
+<div data-reveal data-reveal-delay="1">{% for ph in conviction.intro_phrases %}
+<p class="statement{% if not loop.first %} mt-s{% endif %}" style="color:var(--paper)">{{ ph | fi | safe }}</p>{% endfor %}
+</div>
+</div>
+</section>
+<section class="section">
+<div class="wrap">
+<div class="role-grid">
+<div data-reveal>
+<p class="eyebrow">{{ conviction.role_surtitre }}</p>
+<h2 class="h-lg mt-s">{{ conviction.role_titre | fi | safe }}</h2>
+<p class="statement mt-s" style="color:var(--paper)">{{ conviction.role_phrase | fi | safe }}</p>
+</div>
+<ul class="ticklist" data-reveal data-reveal-delay="1">{% for li in conviction.role_liste %}
+<li>{{ li | fi | safe }}</li>{% endfor %}
+</ul>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="wrap">
+<div class="split split--top" style="margin-bottom: clamp(28px,4vw,52px)">
+<div data-reveal>
+<p class="eyebrow">{{ conviction.methode_surtitre }}</p>
+<h2 class="h-lg mt-s">{{ conviction.methode_titre | fi | safe }}</h2>
+</div>
+<div></div>
+</div>
+<div class="exp-list">{% for et in conviction.etapes %}
+<div class="exp-row" data-reveal>
+<span class="num">{{ "0" if loop.index < 10 }}{{ loop.index }}</span>
+<span class="exp-row__cell"><span class="exp-row__title">{{ et.titre }}</span><span class="exp-row__desc">{{ et.texte | fi | safe }}</span></span>
+</div>{% endfor %}
+</div>
+</div>
+</section>
+{% endblock %}

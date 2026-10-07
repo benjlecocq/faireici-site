@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ seo.titre }}</title>
+<meta name="description" content="{{ seo.description }}">
+<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+<meta property="og:type" content="{{ seo.type or 'website' }}">
+<meta property="og:site_name" content="fair[e]ici">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="{{ seo.titre }}">
+<meta property="og:description" content="{{ seo.description }}">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:image" content="{{ site.url }}{{ seo.image or '/assets/vue-territoire.jpg' }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0d0d0e">
+<link rel="icon" href="/assets/logo-v2.png">
+{% block head %}{% endblock %}
+<link rel="stylesheet" href="/styles/faire-ici.css">
+<style>.fi-strong{font-weight:500;color:var(--paper)}
+{% block style %}{% endblock %}</style>
+</head>
+<body data-page="{{ bodyPage }}" data-motion="off">
+<header class="site-head" data-scrolled="false">
+<a class="brand" href="/" aria-label="fair[e]ici accueil"><span class="logo-word">fair[e]ici!</span></a>
+<nav class="nav" aria-label="Navigation principale">
+<a href="/"{% if navKey == 'accueil' %} aria-current="page"{% endif %}>Accueil</a>
+<a href="/conviction.html"{% if navKey == 'conviction' %} aria-current="page"{% endif %}>Conviction</a>
+<div class="has-menu">
+<a href="/{{ exp[0].page }}.html"{% if navKey == 'expertises' %} aria-current="page"{% endif %}>Expertises</a>
+<div class="submenu" role="menu">{% for e in exp %}
+<a href="/{{ e.page }}.html"><span class="num">{{ e.num }}</span> {{ e.nom }}</a>{% endfor %}
+</div>
+</div>
+<a href="/realisations.html"{% if navKey == 'realisations' %} aria-current="page"{% endif %}>Réalisations</a>
+<a href="/ressources.html"{% if navKey == 'ressources' %} aria-current="page"{% endif %}>Ressources</a>
+<a href="/contact.html"{% if navKey == 'contact' %} aria-current="page"{% endif %}>Contact</a>
+</nav>
+<div class="head-cta">
+<a href="/contact.html" class="btn btn--ghost">Parlons-nous <span class="arrow">→</span></a>
+<button class="burger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+</div>
+</header>
+<div class="drawer" aria-hidden="true">
+<a href="/"><span class="num">00</span> Accueil</a>
+<a href="/conviction.html"><span class="num">01</span> Conviction</a>
+<div class="drawer-sub">{% for e in exp %}
+<a href="/{{ e.page }}.html">{{ e.nom }}</a>{% endfor %}
+</div>
+<a href="/realisations.html"><span class="num">02</span> Réalisations</a>
+<a href="/ressources.html"><span class="num">03</span> Ressources</a>
+<a href="/contact.html"><span class="num">04</span> Contact</a>
+</div>
+<main>
+{% block main %}{% endblock %}
+</main>
+{% block aftermain %}{% endblock %}
+<footer class="site-foot">
+<div class="wrap">
+<div class="foot-top">
+<div>
+<p class="foot-sig-name"><span class="logo-word">fair[e]ici!</span></p>
+<p class="foot-sig">Révéler<span>·</span>Mobiliser<span>·</span>Concevoir<br>Expérimenter<span>·</span>Déployer</p>
+</div>
+<div class="foot-col foot-col--nav">
+<h4>Naviguer</h4>
+<a href="/">Accueil</a>
+<a href="/conviction.html">Conviction</a>
+<a href="/{{ exp[0].page }}.html">Expertises</a>
+<a href="/realisations.html">Réalisations</a>
+<a href="/ressources.html">Ressources</a>
+<a href="/contact.html">Contact</a>
+</div>
+<div class="foot-col">
+<h4>Contact</h4>
+<a href="/contact.html">Parlons de votre projet</a>
+<a href="mailto:{{ site.email }}">{{ site.email }}</a>
+</div>
+</div>
+<div class="foot-bottom">
+<span>© {{ annee }} <span class="brand-word">fair[e]ici</span> - Développement territorial</span>
+<a href="/mentions-legales.html">Mentions légales</a>
+</div>
+</div>
+</footer>
+<script src="/scripts/site.js"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

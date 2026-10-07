@@ -1,0 +1,180 @@
+---
+permalink: "contact.html"
+navKey: "contact"
+bodyPage: "contact"
+---
+{% extends "base.njk" %}
+{% set seo = { titre: contact.seo_titre, description: contact.seo_description } %}
+{% block style %}{% raw %}
+.contact-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(36px,6vw,90px); align-items: start; }
+.intentions { display: flex; flex-wrap: wrap; gap: 12px; }
+.chip { font-family: var(--font-mono); font-size: 0.84rem; letter-spacing: 0.02em; color: var(--paper-dim); border: 1px solid var(--line); border-radius: 999px; padding: 0.7em 1.15em; cursor: pointer; transition: border-color .25s var(--ease), color .25s var(--ease), background .25s var(--ease); user-select: none; display: inline-flex; align-items: center; gap: 8px; }
+.chip::before { content: "+"; color: var(--accent); transition: transform .25s var(--ease); }
+.chip:hover { border-color: var(--accent); color: var(--paper); }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+.chip[aria-pressed="true"]::before { content: "✓"; color: #fff; }
+
+.field { display: grid; gap: 8px; margin-bottom: 20px; }
+.field label { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.field label .req { color: var(--accent); }
+.field input, .field textarea {
+  font-family: var(--font-body); font-size: 1rem; color: var(--paper);
+  background: var(--ink-2); border: 1px solid var(--line); border-radius: 10px;
+  padding: 14px 16px; width: 100%; transition: border-color .25s var(--ease), background .25s var(--ease);
+}
+.field textarea { resize: vertical; min-height: 130px; }
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); background: var(--ink-3); }
+.field input::placeholder, .field textarea::placeholder { color: var(--muted); }
+.field.invalid input, .field.invalid textarea { border-color: var(--accent); }
+.field .err { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.04em; color: var(--accent); display: none; }
+.field.invalid .err { display: block; }
+.row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.form-submit { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 8px; }
+.file-drop{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:var(--ink-2);border:1px dashed var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color .25s var(--ease)}.file-drop:hover{border-color:var(--accent)}.file-drop__btn{font-family:var(--font-mono);font-size:.76rem;letter-spacing:.06em;color:var(--paper);border:1px solid var(--line);border-radius:999px;padding:.5em 1em}.file-drop__name{font-size:.88rem;color:var(--muted)}
+.form-note { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.04em; color: var(--muted); }
+
+.form-success { display: none; border: 1px solid var(--accent); border-radius: 16px; padding: clamp(28px,4vw,48px); background: var(--ink-2); }
+.form-success.show { display: block; }
+.form-card.hide { display: none; }
+.form-success .tick { width: 52px; height: 52px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; color: #fff; font-size: 1.4rem; margin-bottom: 20px; }
+
+.contact-info { display: grid; gap: 4px; }
+.contact-info a.big { font-family: var(--font-body); font-weight: 500; font-size: clamp(1rem,1.15vw,1.1rem); letter-spacing: 0; color: var(--paper-dim); transition: color .25s var(--ease); }
+.contact-info a.big:hover { color: var(--accent); }
+.contact-addr { font-family: var(--font-body); font-size: clamp(1rem,1.15vw,1.1rem); line-height: 1.5; color: var(--paper-dim); max-width: 22ch; }
+
+@media (max-width: 900px){ .contact-grid { grid-template-columns: 1fr; } .row-2 { grid-template-columns: 1fr; } }
+{% endraw %}{% endblock %}
+{% block main %}{% raw %}
+<section class="page-hero wrap">
+  <p class="eyebrow" data-reveal>Contact</p>
+  <h1 class="page-hero__title mt-s" data-reveal data-reveal-delay="1">{% endraw %}{{ contact.titre | fi | safe }}{% raw %}</h1>
+  <p class="lede mt-s" data-reveal data-reveal-delay="2">{% endraw %}{{ contact.texte | fi | safe }}{% raw %}</p>
+</section>
+
+<section class="section section--tight">
+  <div class="wrap contact-grid">
+    <!-- LEFT : FORM -->
+    <div data-reveal>
+      <form class="form-card" id="contactForm" novalidate>
+        <div class="row-2">
+          <div class="field" data-field>
+            <label>Prénom <span class="req">*</span></label>
+            <input type="text" name="prenom" placeholder="Votre prénom" required>
+            <span class="err">Merci d'indiquer votre prénom.</span>
+          </div>
+          <div class="field" data-field>
+            <label>Nom <span class="req">*</span></label>
+            <input type="text" name="nom" placeholder="Votre nom" required>
+            <span class="err">Merci d'indiquer votre nom.</span>
+          </div>
+        </div>
+        <div class="field" data-field>
+          <label>Organisation</label>
+          <input type="text" name="orga" placeholder="Collectivité, entreprise…">
+          <span class="err"></span>
+        </div>
+        <div class="field" data-field>
+          <label>Email <span class="req">*</span></label>
+          <input type="email" name="email" placeholder="vous@territoire.fr" required>
+          <span class="err">Merci d'indiquer un email valide.</span>
+        </div>
+        <div class="field" data-field>
+          <label>Votre projet <span class="req">*</span></label>
+          <textarea name="message" placeholder="Décrivez votre territoire, votre enjeu, votre échéance…" required></textarea>
+          <span class="err">Dites-nous en quelques mots de quoi il s'agit.</span>
+        </div>
+        <div class="field">
+          <label>Pièce jointe</label>
+          <label class="file-drop" for="attach"><span class="file-drop__btn">+ Joindre un fichier</span><span class="file-drop__name" id="attachName">PDF, Word, image — 10 Mo max</span></label>
+          <input type="file" id="attach" name="piece_jointe" accept=".pdf,.doc,.docx,.odt,.jpg,.jpeg,.png" hidden>
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="btn btn--solid">Envoyer le message <span class="arrow">→</span></button>
+          <span class="form-note">* champs obligatoires</span>
+        </div>
+      </form>
+
+      <div class="form-success" id="formSuccess" role="status" aria-live="polite">
+        <div class="tick">✓</div>
+        <h3 class="h-md">{% endraw %}{{ contact.merci_titre }}{% raw %}</h3>
+        <p class="dim mt-s max-46">{% endraw %}{{ contact.merci_texte }}{% raw %}</p>
+        <button type="button" class="link mt-m" id="resetForm" style="border:0;padding:0">↺ Envoyer un autre message</button>
+      </div>
+    </div>
+
+    <!-- RIGHT : INFOS -->
+    <div data-reveal data-reveal-delay="1">
+      <p class="eyebrow">Contactez-nous</p>
+      <div class="contact-info mt-s">
+        {% endraw %}<a class="big" href="mailto:{{ site.email }}">{{ site.email }}</a>{% raw %}
+        {% endraw %}<a class="big" href="tel:{{ site.telephone }}" style="margin-top:6px">{{ site.telephone_affiche }}</a>{% raw %}
+      </div>
+      <hr class="hairline mt-l">
+      <div class="mt-l">
+        {% endraw %}{% for a in site.adresses %}<p class="eyebrow eyebrow--plain" style="color:var(--muted);margin:{{ "0 0 12px" if loop.first else "22px 0 12px" }}">{{ a.libelle }}</p>
+<p class="contact-addr">{{ a.rue }}<br>{{ a.code_postal }} {{ a.ville }}</p>
+{% endfor %}{% raw %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endraw %}{% endblock %}
+{% block scripts %}{% raw %}
+<script>
+(function(){
+  // intention chips
+  document.querySelectorAll('#intentions .chip').forEach(function(c){
+    c.addEventListener('click', function(){
+      c.setAttribute('aria-pressed', c.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+    });
+  });
+
+  var form = document.getElementById('contactForm');
+  var success = document.getElementById('formSuccess');
+
+  function validate(field){
+    var input = field.querySelector('input, textarea');
+    if (!input || !input.hasAttribute('required')) return true;
+    var ok = input.value.trim() !== '';
+    if (input.type === 'email') ok = ok && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(input.value.trim());
+    field.classList.toggle('invalid', !ok);
+    return ok;
+  }
+
+  var attach = document.getElementById('attach'), attachName = document.getElementById('attachName');
+  attach.addEventListener('change', function(){
+    var f = attach.files[0];
+    if (!f) { attachName.textContent = 'PDF, Word, image — 10 Mo max'; return; }
+    if (f.size > 10*1024*1024) { attach.value=''; attachName.textContent = 'Fichier trop lourd (10 Mo max)'; return; }
+    attachName.textContent = f.name;
+  });
+  form.querySelectorAll('[data-field]').forEach(function(f){
+    var input = f.querySelector('input, textarea');
+    if (input) input.addEventListener('input', function(){ if (f.classList.contains('invalid')) validate(f); });
+  });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var allOk = true;
+    form.querySelectorAll('[data-field]').forEach(function(f){ if (!validate(f)) allOk = false; });
+    if (!allOk) {
+      var firstBad = form.querySelector('.field.invalid input, .field.invalid textarea');
+      if (firstBad) firstBad.focus();
+      return;
+    }
+    form.classList.add('hide');
+    success.classList.add('show');
+  });
+
+  document.getElementById('resetForm').addEventListener('click', function(){
+    form.reset();
+    attachName.textContent = 'PDF, Word, image — 10 Mo max';
+    form.querySelectorAll('[data-field]').forEach(function(f){ f.classList.remove('invalid'); });
+    document.querySelectorAll('#intentions .chip').forEach(function(c){ c.setAttribute('aria-pressed','false'); });
+    success.classList.remove('show');
+    form.classList.remove('hide');
+  });
+})();
+</script>
+{% endraw %}{% endblock %}

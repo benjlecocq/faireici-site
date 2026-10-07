@@ -1,0 +1,205 @@
+---
+permalink: "realisations.html"
+navKey: "realisations"
+bodyPage: "realisations"
+---
+{% extends "base.njk" %}
+{% set seo = { titre: "Nos réalisations et références - fair[e]ici", description: "Nos missions de développement territorial : reconversion de la gare de Barr, stratégie économique de Serre-Ponçon, programmation de l'Autre Soie, filière ICC de Plaine Commune." } %}
+{% block style %}{% raw %}
+/* ===== filters ===== */
+.filters { display: flex; flex-wrap: wrap; gap: 10px; }
+.filter { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.06em; color: var(--paper-dim); border: 1px solid var(--line); border-radius: 999px; padding: 0.65em 1.15em; cursor: pointer; transition: border-color .25s var(--ease), color .25s var(--ease), background .25s var(--ease); white-space: nowrap; }
+.filter:hover { border-color: var(--paper-dim); color: var(--paper); }
+.filter[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+.filter .count { opacity: 0.6; margin-left: 0.4em; }
+
+/* ===== grid ===== */
+.proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px,1.5vw,22px); }
+@media (max-width: 900px){ .proj-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px){ .proj-grid { grid-template-columns: 1fr; } }
+
+.card { position: relative; display: block; width: 100%; text-align: left; border: 0; padding: 0; cursor: pointer; overflow: hidden; border-radius: 10px; aspect-ratio: 4/5; background: var(--ink-2); }
+.card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease), filter .5s var(--ease); filter: brightness(0.72) saturate(0.95); }
+.card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13,13,14,0.1) 0%, rgba(13,13,14,0.05) 45%, rgba(13,13,14,0.82) 100%); transition: opacity .5s var(--ease); }
+.card:hover img { transform: scale(1.05); filter: brightness(0.78) saturate(1); }
+.card__body { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: clamp(18px,2vw,26px); }
+.card__cat { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); display: inline-flex; align-items: center; gap: 0.6em; margin-bottom: 12px; }
+.card__cat::before { content: ""; width: 18px; height: 1px; background: var(--accent); }
+.card__title { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.15rem,1.55vw,1.45rem); line-height: 1.12; letter-spacing: -0.02em; color: var(--paper); text-wrap: balance; }
+.card__client { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.04em; color: var(--paper-dim); margin-top: 9px; display: flex; align-items: center; gap: 8px; }
+.card__client .yr { color: var(--muted); }
+.card__arrow { position: absolute; top: 16px; right: 16px; z-index: 2; width: 38px; height: 38px; border-radius: 50%; border: 1px solid rgba(242,237,233,0.25); display: grid; place-items: center; background: rgba(13,13,14,0.3); backdrop-filter: blur(3px); opacity: 0; transform: translateY(-6px); transition: opacity .4s var(--ease), transform .4s var(--ease), background .4s var(--ease); }
+.card:hover .card__arrow { opacity: 1; transform: translateY(0); }
+.card:hover .card__arrow { background: var(--accent); border-color: var(--accent); }
+
+.proj-empty { color: var(--muted); font-family: var(--font-mono); font-size: 0.85rem; padding: 40px 0; }
+
+/* ===== modal ===== */
+.modal { position: fixed; inset: 0; z-index: 120; display: none; }
+.modal.open { display: block; }
+.modal__scrim { position: absolute; inset: 0; background: rgba(8,8,9,0.72); backdrop-filter: blur(6px); opacity: 0; transition: opacity .4s var(--ease); }
+.modal.open .modal__scrim { opacity: 1; }
+.modal__panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(760px, 94vw); background: var(--ink); border-left: 1px solid var(--line); overflow-y: auto; transform: translateX(40px); opacity: 0; transition: transform .5s var(--ease), opacity .5s var(--ease); }
+.modal.open .modal__panel { transform: none; opacity: 1; }
+.modal__media { position: relative; aspect-ratio: 16/10; background: var(--ink-2); }
+.modal__media img { width: 100%; height: 100%; object-fit: cover; }
+.modal__close { position: fixed; top: 22px; right: 22px; z-index: 130; width: 46px; height: 46px; border-radius: 50%; background: var(--ink-2); border: 1px solid var(--line); color: var(--paper); display: grid; place-items: center; font-size: 1.1rem; transition: background .3s var(--ease), transform .3s var(--ease); }
+.modal__close:hover { background: var(--accent); border-color: var(--accent); transform: rotate(90deg); }
+.modal__inner { padding: clamp(26px,3.4vw,52px); }
+.modal__cat { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); display: inline-flex; align-items: center; gap: 0.6em; }
+.modal__cat::before { content: ""; width: 22px; height: 1px; background: var(--accent); }
+.modal__title { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.7rem,3vw,2.6rem); line-height: 1.04; letter-spacing: -0.025em; margin-top: 8px; text-wrap: balance; }
+.modal__client { font-family: var(--font-mono); font-size: 0.82rem; letter-spacing: 0.04em; color: var(--accent); margin-top: 0; }
+.modal__partners { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.02em; color: var(--muted); margin-top: 12px; }
+.modal__steps { margin: 4px 0 0; padding: 0; list-style: none; display: grid; gap: 9px; }
+.modal__steps li { position: relative; padding-left: 26px; color: var(--paper-dim); font-size: clamp(0.98rem,1.15vw,1.06rem); line-height: 1.5; }
+.modal__steps li::before { content: ""; position: absolute; left: 2px; top: 0.62em; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+.modal__phase { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.02rem,1.2vw,1.15rem); color: var(--paper); margin: 18px 0 10px; letter-spacing: -0.01em; }
+.modal__phase:first-child { margin-top: 0; }
+.modal__section:has(.modal__steps) { }
+.modal__meta { display: flex; flex-wrap: wrap; gap: clamp(20px,3vw,42px); margin-top: clamp(22px,2.6vw,32px); padding: 18px 0; border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+.modal__meta dl { margin: 0; }
+.modal__meta dt { font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.modal__meta dd { margin: 5px 0 0; font-size: 0.98rem; color: var(--paper); line-height: 1.35; }
+.modal__section { margin-top: clamp(28px,3.4vw,42px); }
+.modal__section h3 { font-family: var(--font-mono); font-weight: 400; font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+.modal__section p { color: var(--paper-dim); font-size: clamp(1rem,1.2vw,1.1rem); line-height: 1.6; }
+.modal__section p + p { margin-top: 0.8em; }
+.modal__cta { margin-top: clamp(32px,4vw,48px); padding-top: 26px; border-top: 1px solid var(--line-soft); }
+body[data-modal="open"] { overflow: hidden; }
+
+@media (max-width: 560px){ .modal__meta { gap: 16px 28px; } }
+
+/* ===== toolbar (filters + book toggle) ===== */
+.toolbar { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+.book-toggle { font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.08em; color: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 0.7em 1.2em; cursor: pointer; transition: border-color .25s var(--ease), background .25s var(--ease), color .25s var(--ease); white-space: nowrap; }
+.book-toggle:hover { border-color: var(--paper-dim); }
+.book-toggle .bt-on { display: none; }
+body[data-book="on"] .book-toggle { background: var(--accent); border-color: var(--accent); color: #fff; }
+body[data-book="on"] .book-toggle .bt-on { display: inline; }
+body[data-book="on"] .book-toggle .bt-off { display: none; }
+
+/* ===== book mode: card selection ===== */
+.card__check { position: absolute; top: 16px; left: 16px; z-index: 3; width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid rgba(242,237,233,0.5); background: rgba(13,13,14,0.45); backdrop-filter: blur(3px); display: none; place-items: center; color: #fff; font-size: 0.85rem; transition: background .25s var(--ease), border-color .25s var(--ease); }
+body[data-book="on"] .card__check { display: grid; }
+body[data-book="on"] .card { outline: 2px solid transparent; outline-offset: 3px; transition: outline-color .25s var(--ease); }
+body[data-book="on"] .card .card__arrow { display: none; }
+.card.selected { outline-color: var(--accent); }
+.card.selected .card__check { background: var(--accent); border-color: var(--accent); }
+
+/* ===== selection bar ===== */
+.bookbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 90; transform: translateY(120%); transition: transform .45s var(--ease); padding: 16px var(--gutter) calc(16px + env(safe-area-inset-bottom)); }
+body[data-book="on"] .bookbar { transform: none; }
+.bookbar__inner { max-width: var(--maxw); margin-inline: auto; background: var(--ink-2); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px 14px 22px; display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; box-shadow: 0 24px 60px -24px rgba(0,0,0,0.8); }
+.bookbar__count { font-family: var(--font-mono); font-size: 0.84rem; letter-spacing: 0.04em; color: var(--paper-dim); }
+.bookbar__count b { color: var(--paper); font-size: 1rem; }
+.bookbar__actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.bookbar__clear { font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.06em; color: var(--muted); cursor: pointer; transition: color .25s var(--ease); }
+.bookbar__clear:hover { color: var(--paper); }
+.bookbar #bookGen[disabled] { opacity: 0.4; pointer-events: none; }
+
+/* ===== book output (hidden on screen, shown when printing) ===== */
+.book-out { display: none; }
+
+@media print {
+  @page { size: A4 landscape; margin: 0; }
+  html, body { background: #fff !important; margin: 0 !important; }
+  /* remove page chrome from flow so it produces NO blank pages */
+  .site-head, main, .site-foot, .bookbar, .modal, .drawer { display: none !important; }
+  .book-out { display: block !important; margin: 0; padding: 0; }
+
+  .slide { position: relative; width: 297mm; height: 210mm; box-sizing: border-box; margin: 0; padding: 11mm 14mm 9mm; page-break-after: always; break-after: page; overflow: hidden; background: #fff; color: #2b2825; display: flex; flex-direction: column; font-family: var(--font-body); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .slide:last-child { page-break-after: auto; break-after: auto; }
+
+  /* header: logo only */
+  .slide__top { display: flex; align-items: center; padding-bottom: 4mm; border-bottom: 0.5pt solid #ddd8d3; flex: none; }
+  .slide__logo { font-family: 'Source Code Pro', ui-monospace, monospace; font-weight: 600; font-size: 17pt; color: #d6433d; line-height: 1; }
+
+  /* band: meta (left) | title block (right) - bottom rules aligned */
+  .slide__band { display: grid; grid-template-columns: 40% 60%; gap: 12mm; margin-top: 6mm; align-items: stretch; flex: none; }
+  .slide__meta { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm 8mm; align-content: start; padding-bottom: 4mm; border-bottom: 0.5pt solid #ddd8d3; }
+  .slide__meta dt { font-family: var(--font-mono); font-size: 6.5pt; letter-spacing: 0.1em; text-transform: uppercase; color: #a8a199; }
+  .slide__meta dd { margin: 1.5mm 0 0; font-family: var(--font-mono); font-size: 8.5pt; color: #2b2825; }
+  .slide__head { padding-bottom: 4mm; border-bottom: 0.5pt solid #ddd8d3; }
+  .slide__client { font-family: var(--font-mono); font-size: 8pt; color: #6b655f; }
+  .slide__title { font-family: var(--font-display); font-weight: 600; font-size: 16pt; line-height: 1.1; letter-spacing: -0.02em; color: #141416; margin: 2.5mm 0 0; text-wrap: balance; }
+  .slide__partners { font-family: var(--font-mono); font-size: 7.5pt; color: #a8a199; margin-top: 2mm; }
+
+  /* body: image (left) | two columns (right) - bottoms aligned */
+  .slide__body { display: grid; grid-template-columns: 40% 60%; gap: 12mm; margin-top: 6mm; flex: 1 1 auto; align-items: stretch; min-height: 0; }
+  .slide__left { position: relative; min-height: 0; }
+  .slide__media { position: absolute; left: 0; right: 0; top: 0; bottom: 5mm; border-radius: 1.5mm; overflow: hidden; box-shadow: 0 0 0 0.75pt #e2ddd8; background-size: cover; background-position: center; background-repeat: no-repeat; }
+
+  .slide__cols { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; align-content: start; min-height: 0; }
+  .slide__sec { break-inside: avoid; }
+  .slide__sec h4 { font-family: var(--font-mono); font-weight: 400; font-size: 7pt; letter-spacing: 0.12em; text-transform: uppercase; color: #d6433d; margin: 0 0 3mm; }
+  .slide__sec p { font-size: 8.5pt; line-height: 1.45; color: #3f3a35; margin: 0 0 2mm; }
+  .slide__steps { margin: 0; padding: 0; list-style: none; }
+  .slide__steps li { position: relative; padding-left: 3.6mm; font-size: 8.5pt; line-height: 1.4; color: #3f3a35; margin-bottom: 1.4mm; break-inside: avoid; }
+  .slide__steps li::before { content: ""; position: absolute; left: 0; top: 1.5mm; width: 1.2mm; height: 1.2mm; border-radius: 50%; background: #d6433d; }
+  .slide__phase { font-family: var(--font-body); font-weight: 600; font-size: 8.5pt; color: #141416; margin: 3mm 0 1.6mm; break-after: avoid; }
+  .slide__phase:first-child { margin-top: 0; }
+
+  /* footer */
+  .slide__foot { flex: none; margin-top: auto; padding-top: 4mm; border-top: 0.5pt solid #ddd8d3; display: flex; justify-content: space-between; align-items: baseline; font-family: var(--font-mono); font-size: 7pt; letter-spacing: 0.04em; color: #a8a199; }
+  .slide__foot .bk { color: #d6433d; }
+}
+{% endraw %}{% endblock %}
+{% block main %}{% raw %}
+<!-- HERO -->
+<section class="page-hero wrap">
+  <p class="eyebrow" data-reveal>Réalisations</p>
+  <h1 class="page-hero__title mt-s" data-reveal data-reveal-delay="1">Des projets concrets, ancrés dans leurs <span class="bracket">[territoires]</span>.</h1>
+</section>
+
+<!-- FILTERS + GRID -->
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="toolbar" data-reveal>
+      <div class="filters" id="filters"></div>
+      <button class="book-toggle" id="bookToggle" aria-pressed="false">
+        <span class="bt-on">✕ Quitter le mode book</span>
+        <span class="bt-off">▦ Constituer un book</span>
+      </button>
+    </div>
+    <div class="proj-grid mt-m" id="grid" data-reveal data-reveal-delay="1"></div>
+    {% endraw %}<noscript id="seo-fallback">
+<h2>Nos références</h2>
+<ul>{% for r in collections.projets %}
+<li><a href="/realisations/{{ r.data.slug }}.html"><strong>{{ r.data.client }}</strong> - {{ r.data.titre }}</a></li>{% endfor %}
+</ul>
+</noscript>{% raw %}
+    <p class="proj-empty" id="empty" hidden>Aucune réalisation pour ce filtre pour le moment.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+{% endraw %}{% endblock %}
+{% block aftermain %}{% raw %}
+
+<!-- SELECTION BAR (book mode) -->
+<div class="bookbar" id="bookbar" aria-hidden="true">
+  <div class="bookbar__inner">
+    <span class="bookbar__count"><b id="bookCount">0</b> référence(s) sélectionnée(s)</span>
+    <div class="bookbar__actions">
+      <button class="bookbar__clear" id="bookClear">Tout désélectionner</button>
+      <button class="btn btn--solid" id="bookGen">Générer le book PDF <span class="arrow">→</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- PRINT OUTPUT (book slides) -->
+<div class="book-out" id="bookOut" aria-hidden="true"></div>
+
+<!-- MODAL -->
+<div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="modal__scrim" data-close></div>
+  <button class="modal__close" data-close aria-label="Fermer">✕</button>
+  <div class="modal__panel" id="modalPanel"></div>
+</div>
+
+{% endraw %}{% endblock %}
+{% block scripts %}<script src="https://unpkg.com/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://unpkg.com/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script>window.EXPERTISES = {{ exp | expMap | safe }}; window.PROJETS = {{ collections.projets | projetsJson | safe }};</script>
+<script src="/scripts/realisations.js"></script>{% endblock %}

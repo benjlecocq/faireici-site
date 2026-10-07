@@ -1,0 +1,45 @@
+{
+  "seo_titre": "Notre conviction et notre méthode - fair[e]ici",
+  "seo_description": "Notre approche du développement local : révéler les ressources propres à chaque territoire. Une méthode en cinq temps, du diagnostic au déploiement opérationnel.",
+  "surtitre": "Notre conviction",
+  "titre": "Les territoires disposent déjà d'une partie des [solutions].",
+  "intro_titre": "Chaque territoire compose un système [unique] d'acteurs, de dynamiques et de ressources dont les potentiels restent souvent dispersés, insuffisamment valorisés ou difficiles à mobiliser.",
+  "intro_phrases": [
+    "Face à la complexité des mutations en cours, l'avenir des territoires ne peut reposer sur l'application de modèles standards.",
+    "Il est nécessaire de révéler et d'activer ce qui les rend singuliers et en parallèle, d'explorer de nouveaux horizons."
+  ],
+  "role_surtitre": "Notre rôle",
+  "role_titre": "Facilitateur et accélérateur de projets.",
+  "role_phrase": "Nous aidons les acteurs locaux à transformer les idées en réalisations concrètes.",
+  "role_liste": [
+    "décrypter les dynamiques et poser un diagnostic lucide",
+    "identifier des opportunités de développement crédibles",
+    "mobiliser et tisser des coopérations durables",
+    "transformer les stratégies en actions",
+    "expérimenter et façonner des solutions efficaces"
+  ],
+  "methode_surtitre": "Notre méthode",
+  "methode_titre": "Cinq temps, du diagnostic au déploiement opérationnel.",
+  "etapes": [
+    {
+      "titre": "Révéler",
+      "texte": "Analyser les ressources, les enjeux et les aspirations du territoire pour partir du réel et cibler les potentiels."
+    },
+    {
+      "titre": "Mobiliser",
+      "texte": "Impliquer les parties prenantes dans la construction des projets, dès l'amont."
+    },
+    {
+      "titre": "Concevoir",
+      "texte": "Construire des réponses adaptées aux réalités locales, fonctionnelles et soutenables."
+    },
+    {
+      "titre": "Expérimenter",
+      "texte": "Tester avant de généraliser, pour ajuster au plus près des usages."
+    },
+    {
+      "titre": "Déployer",
+      "texte": "Ancrer les projets dans la durée et organiser leur montée en puissance."
+    }
+  ]
+}

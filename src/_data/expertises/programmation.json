@@ -1,0 +1,20 @@
+{
+  "page": "expertise-programmation",
+  "nom": "Programmation",
+  "nom_long": "Programmation",
+  "description": "Définir des équipements, bâtiments et projets urbains utiles, fonctionnels et adaptés aux usages.",
+  "seo_titre": "Programmation urbaine et programmation d’équipements - fair[e]ici",
+  "seo_description": "Programmation urbaine et architecturale à hauteur d'usagers : projets urbains, zones d'activités, tiers-lieux, hôtels productifs. Opportunité, faisabilité et modélisation économique.",
+  "titre": "Programmer des projets [utiles] et soutenables",
+  "constat": "Un équipement performant est d'abord un équipement qui répond à un besoin.",
+  "texte": "Nous accompagnons les maîtres d’ouvrage dans la définition de leurs opérations d’aménagement, à toutes les échelles : projet urbain, zone d'activités, hôtel productif, tiers-lieux...\n\nNous nous plaçons à hauteur d’usagers pour proposer une approche fonctionnelle, à l'intersection des besoins des utilisateurs, des ambitions du commanditaire et des enjeux du territoire.\n\nNous veillons à garantir la soutenabilité environnementale et économique de chaque projet.",
+  "image": "/assets/maquette-blanche.jpg",
+  "image_alt": "Maquette d'étude monochrome d'un quartier - bâti, voiries et topographie",
+  "ambition": "Créer des sites fonctionnels, sobres et à forte intensité d'usage.",
+  "actions": [
+    "Opportunité et faisabilité des projets d'aménagement",
+    "Définition de l'offre de service et hybridation des modèles",
+    "Modélisation économique",
+    "Hypothèses de montage et d'exploitation"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "page": "expertise-diversification",
+  "nom": "Résilience économique",
+  "nom_long": "Résilience économique",
+  "description": "Consolider les bases économiques territoriales et ouvrir de nouveaux champs d'activités durables.",
+  "seo_titre": "Résilience et diversification économique des territoires - fair[e]ici",
+  "seo_description": "Diagnostic économique territorial, chaînes de valeur, filières d'avenir : nous accompagnons les collectivités vers des modèles de développement plus robustes et diversifiés.",
+  "titre": "Diversifier l'économie pour renforcer la [résilience] des territoires",
+  "constat": "Une spécialisation peut être une force mais aussi un facteur de fragilité dans un contexte en mutation.",
+  "texte": "De nombreux territoires reposent encore sur un nombre limité d'activités et de filières. Cette spécialisation peut constituer un atout différenciant mais peut également se transformer en fragilité face aux évolutions économiques, climatiques ou démographiques. Les territoires touristiques, industriels ou ruraux sont particulièrement concernés.\n\nNous accompagnons les collectivités dans l'identification d'opportunités de développement plus diversifiées et dans la construction de trajectoires économiques robustes.",
+  "image": "/assets/tissu-economique.jpg",
+  "image_alt": "Vallée agricole et zone d'activités entre montagnes - tissu économique local",
+  "ambition": "Construire des modèles de développement plus robustes, diversifiés et alignés avec les enjeux du développement durable.",
+  "actions": [
+    "Consolider les chaînes de valeur",
+    "Dynamiser les échanges économiques locaux",
+    "Faire émerger des filières d'avenir",
+    "Accompagner les acteurs locaux dans leurs transitions"
+  ]
+}

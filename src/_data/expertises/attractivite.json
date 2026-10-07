@@ -1,0 +1,20 @@
+{
+  "page": "expertise-attractivite",
+  "nom": "Attractivité territoriale",
+  "nom_long": "Attractivité territoriale",
+  "description": "Construire des stratégies fondées sur les ressources, l'identité et les ambitions propres à chaque territoire.",
+  "seo_titre": "Stratégie d’attractivité territoriale et marketing territorial - fair[e]ici",
+  "seo_description": "Diagnostic d'attractivité, positionnement territorial, récits de territoire et nouveaux attracteurs : affirmer un positionnement clair, crédible et différenciant.",
+  "titre": "Révéler ce qui rend un territoire [unique]",
+  "constat": "L'attractivité ne se résume pas au marketing territorial.",
+  "texte": "Nous accompagnons les territoires dans la consolidation de leur offre à destination des habitants, des entreprises, des visiteurs...\n\nNos interventions s’appuient sur l’observation, le dialogue et la co-construction.\n\nNous bâtissons des stratégies en phase avec l’identité et les ambitions du territoire, porteuses de positionnements clairs et de récits territoriaux puissants.",
+  "image": "/assets/identite.jpg",
+  "image_alt": "Rue d'un centre ancien animée par des parapluies colorés suspendus entre les façades",
+  "ambition": "Affirmer et incarner un positionnement clair, crédible et différenciant.",
+  "actions": [
+    "Révéler les atouts et singularités du territoire",
+    "Construire des récits territoriaux puissants et mobilisateurs",
+    "Mettre à niveau l'offre territoriale et la promesse",
+    "Faire émerger de nouveaux attracteurs"
+  ]
+}
