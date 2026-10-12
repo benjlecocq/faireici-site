@@ -16,6 +16,18 @@
     {
       "image": "/assets/vue-territoire.jpg",
       "alt": "Vue aérienne d'un territoire - village, champs et rivière"
+    },
+    {
+      "image": "/assets/uploads/clermontfd.jpeg",
+      "alt": "Clermont-ferrand centre-ville vu d'en haut"
+    },
+    {
+      "image": "/assets/uploads/img_9254.jpeg",
+      "alt": "Le puy en velay"
+    },
+    {
+      "image": "/assets/uploads/brouilly.jpeg",
+      "alt": "Brouilly"
     }
   ],
   "seo_description": "Cabinet de conseil en développement territorial à Lyon. Nous accompagnons collectivités et acteurs économiques : résilience économique, attractivité, offre d'accueil, programmation urbaine, ESS.",
