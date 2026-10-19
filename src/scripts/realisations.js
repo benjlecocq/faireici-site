@@ -35,6 +35,8 @@ html,body{margin:0;padding:0;background:#fff;-webkit-print-color-adjust:exact;pr
 .slide__steps li::before{content:"";position:absolute;left:0;top:1.5mm;width:1.2mm;height:1.2mm;border-radius:50%;background:#d6433d;}
 .slide__phase{font-family:var(--font-body);font-weight:600;font-size:8.5pt;color:#141416;margin:3mm 0 1.6mm;break-after:avoid;}
 .slide__phase:first-child{margin-top:0;}
+.slide__rich strong{color:#141416;font-weight:600;}
+.slide__rich li p{margin:0;font-size:inherit;}
 .slide__foot{flex:none;margin-top:auto;padding-top:4mm;border-top:0.5pt solid #ddd8d3;display:flex;justify-content:space-between;align-items:baseline;font-family:var(--font-mono);font-size:7pt;letter-spacing:0.04em;color:#a8a199;}
 .slide__foot .bk{color:#d6433d;}
 @media screen{body{background:#555;padding:18px 0;}.slide{box-shadow:0 10px 40px rgba(0,0,0,.4);margin-bottom:18px;}}
@@ -115,17 +117,8 @@ html,body{margin:0;padding:0;background:#fff;-webkit-print-color-adjust:exact;pr
   }
 
   /* ---- modal ---- */
-  function methoHTML(m, listClass) {
-    if (!m) return '';
-    if (typeof m === 'string') return '<p>' + esc(m) + '</p>';
-    if (m[0] && typeof m[0] === 'object') {
-      return m.map(function (ph) {
-        return (ph.phase ? '<div class="modal__phase">' + esc(ph.phase) + '</div>' : '') +
-          '<ul class="' + listClass + '">' + ph.items.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('') + '</ul>';
-      }).join('');
-    }
-    return '<ul class="' + listClass + '">' + m.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('') + '</ul>';
-  }
+  /* contexteHTML / methodoHTML : HTML déjà généré (gras + puces) au build */
+  function richHTML(h, listClass) { return String(h || '').replace(/<ul>/g, '<ul class="' + listClass + '">'); }
   function openModal(idx) {
     var p = PROJETS[idx];
     if (!p) return;
@@ -141,8 +134,8 @@ html,body{margin:0;padding:0;background:#fff;-webkit-print-color-adjust:exact;pr
           metaCell('Contact client', p.contactClient) +
           metaCell('Localité', p.localite) +
         '</div>' +
-        (p.contexteObjectifs ? '<div class="modal__section"><h3>Contexte &amp; Objectifs</h3><p>' + esc(p.contexteObjectifs).replace(/\n+/g, '</p><p>') + '</p></div>' : '') +
-        (p.methodo ? '<div class="modal__section"><h3>Méthodologie</h3>' + methoHTML(p.methodo, 'modal__steps') + '</div>' : '') +
+        (p.contexteHTML ? '<div class="modal__section modal__rich"><h3>Contexte &amp; Objectifs</h3>' + richHTML(p.contexteHTML, 'modal__steps') + '</div>' : '') +
+        (p.methodoHTML ? '<div class="modal__section modal__rich"><h3>Méthodologie</h3>' + richHTML(p.methodoHTML, 'modal__steps') + '</div>' : '') +
       '</div>';
     modalPanel.scrollTop = 0;
     modal.classList.add('open');
@@ -195,21 +188,7 @@ html,body{margin:0;padding:0;background:#fff;-webkit-print-color-adjust:exact;pr
   function buildSlides() {
     bookOut.innerHTML = selected.map(function (idx) {
       var p = PROJETS[idx];
-      function sec(t, b){ return b ? '<div class="slide__sec"><h4>' + esc(t) + '</h4><p>' + esc(b).replace(/\n+/g,'</p><p>') + '</p></div>' : ''; }
-      function metho(m){
-        if(!m) return '';
-        var inner;
-        if (typeof m === 'string') { inner = '<p>' + esc(m) + '</p>'; }
-        else if (m[0] && typeof m[0] === 'object') {
-          inner = m.map(function(ph){
-            return (ph.phase ? '<div class="slide__phase">' + esc(ph.phase) + '</div>' : '') +
-              '<ul class="slide__steps">' + ph.items.map(function(s){return '<li>' + esc(s) + '</li>';}).join('') + '</ul>';
-          }).join('');
-        } else {
-          inner = '<ul class="slide__steps">' + m.map(function(s){return '<li>' + esc(s) + '</li>';}).join('') + '</ul>';
-        }
-        return '<div class="slide__sec"><h4>Méthodologie</h4>' + inner + '</div>';
-      }
+      function sec(t, h){ return h ? '<div class="slide__sec slide__rich"><h4>' + esc(t) + '</h4>' + richHTML(h, 'slide__steps') + '</div>' : ''; }
       function cell(k, v){ return v ? '<div><dt>' + esc(k) + '</dt><dd>' + esc(v) + '</dd></div>' : ''; }
       return '<section class="slide">' +
         '<div class="slide__top">' +
@@ -229,7 +208,7 @@ html,body{margin:0;padding:0;background:#fff;-webkit-print-color-adjust:exact;pr
         '<div class="slide__body">' +
           '<div class="slide__left"><div class="slide__media" style="background-image:url(\'' + p.image + '\')"></div></div>' +
           '<div class="slide__cols">' +
-            sec('Contexte & Objectifs', p.contexteObjectifs) + metho(p.methodo) +
+            sec('Contexte & Objectifs', p.contexteHTML) + sec('Méthodologie', p.methodoHTML) +
           '</div>' +
         '</div>' +
         '<div class="slide__foot"><span class="bk">fair[e]ici</span><span>Réalisations · Développement territorial</span></div>' +
