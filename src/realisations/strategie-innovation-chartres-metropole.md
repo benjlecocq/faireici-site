@@ -13,33 +13,55 @@ expertises:
   - diversification
   - ess
 image: /assets/uploads/2-6-scaled.jpg
-contexte: >
+contexte: >-
   Chartres métropole dispose d'un tissu économique dynamique, adossé à des
   filières porteuses, en particulier la cosmétique et la pharmaceutique.
   Celles-ci s'appuient sur un contexte favorable au développement d'activités
   innovantes :
 
 
-  •	un écosystème d'acteurs fortement structuré (Beauty Tech)
+  * un écosystème d'acteurs fortement structuré (Beauty Tech)
 
-  •	une offre territoriale diversifiée (le 101 Cité de l’Innovation, des incubateurs...)
+  * une offre territoriale diversifiée (le 101 Cité de l’Innovation, des incubateurs...)
 
-  •	un schéma d'accueil et d'accompagnement défini en 2018
+  * un schéma d'accueil et d'accompagnement défini en 2018
 
-  •	des partenariats (pôle Cosmétic Valley, dispositif Territoire d'Industrie...)
+  * des partenariats (pôle Cosmétic Valley, dispositif Territoire d'Industrie...)
 
 
-  Ces différentes briques ont permis de poser des fondations solides et d'engranger des succès en terme de création d'emplois et d'activités. Chartres Métropole veut maintenant consolider son action et franchir de nouvelles étapes. C'est pourquoi elle souhaite construire une nouvelle stratégie d'innovation territoriale.
-methodo:
-  - etapes:
-      - "Etape 1 : Etat des lieux et diagnostic •\tPositionnement stratégique de
-        la Cité de l'Innovation •\tEvaluation de l'écosystème Beauty Tech et des
-        axes d’optimisation •\tAnalyse de l’existant et des besoins en matière
-        d'évènementiel •\tAnalyse des initiatives d’animation, de leur niveau de
-        coordination et de leur lisibilité Etape 2 : Co-construction de la
-        stratégie •\tDéfinition des objectifs à 5 ans et de la trajectoire de
-        développement •\tDéfinition des leviers stratégiques pour consolider
-        l’écosystème Beauty Tech Chartres •\tClarification du rôle de la
-        Métropole sur le volet animation Etape 3 : Elaboration de la feuille de
-        route •\tStructuration d’un programme d’actions partenarial"
+  Ces différentes briques ont permis de poser des fondations solides et d'engranger des succès en terme de création d'emplois et d'activités. 
+
+
+  Chartres Métropole veut maintenant consolider son action et franchir de nouvelles étapes. C'est pourquoi elle souhaite construire une nouvelle stratégie d'innovation territoriale.
+methodo: >-
+  **Etape 1 : Etat des lieux et diagnostic**
+
+
+  * Positionnement stratégique de la Cité del'Innovation
+
+  * Evaluation de l'écosystème Beauty Tech et desaxes d’optimisation
+
+  * Analyse de l’existant et des besoins en matière d'évènementiel
+
+  * Analyse des initiatives d’animation, de leurniveau de coordination et de leur lisibilité
+
+
+  **Etape 2 : Co-construction de la stratégie**
+
+
+  * Définition des objectifs à 5 ans et de latrajectoire de développement
+
+  * Définition des leviers stratégiques pourconsolider l’écosystème Beauty Tech Chartres
+
+  * Clarification du rôle de la Métropole sur levolet animation
+
+
+  **Etape 3 : Elaboration de la feuille de route**
+
+
+  * Structuration d’un programme d’actionspartenarial
+
+  * Priorisation et déclinaison opérationnelle desactions
+
+  *
 ---
