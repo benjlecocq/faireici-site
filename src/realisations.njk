@@ -56,6 +56,10 @@ bodyPage: "realisations"
 .modal__steps li::before { content: ""; position: absolute; left: 2px; top: 0.62em; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
 .modal__phase { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.02rem,1.2vw,1.15rem); color: var(--paper); margin: 18px 0 10px; letter-spacing: -0.01em; }
 .modal__phase:first-child { margin-top: 0; }
+.modal__rich strong { color: var(--paper); font-weight: 600; }
+.modal__rich p + .modal__steps { margin-top: 10px; }
+.modal__rich .modal__steps + p { margin-top: 18px; }
+.modal__rich li p { margin: 0; font-size: inherit; }
 .modal__section:has(.modal__steps) { }
 .modal__meta { display: flex; flex-wrap: wrap; gap: clamp(20px,3vw,42px); margin-top: clamp(22px,2.6vw,32px); padding: 18px 0; border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
 .modal__meta dl { margin: 0; }
@@ -139,6 +143,8 @@ body[data-book="on"] .bookbar { transform: none; }
   .slide__steps li::before { content: ""; position: absolute; left: 0; top: 1.5mm; width: 1.2mm; height: 1.2mm; border-radius: 50%; background: #d6433d; }
   .slide__phase { font-family: var(--font-body); font-weight: 600; font-size: 8.5pt; color: #141416; margin: 3mm 0 1.6mm; break-after: avoid; }
   .slide__phase:first-child { margin-top: 0; }
+  .slide__rich strong { color: #141416; font-weight: 600; }
+  .slide__rich li p { margin: 0; font-size: inherit; }
 
   /* footer */
   .slide__foot { flex: none; margin-top: auto; padding-top: 4mm; border-top: 0.5pt solid #ddd8d3; display: flex; justify-content: space-between; align-items: baseline; font-family: var(--font-mono); font-size: 7pt; letter-spacing: 0.04em; color: #a8a199; }

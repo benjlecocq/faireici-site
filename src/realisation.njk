@@ -28,8 +28,16 @@ bodyPage: "reference"
 .ref-body p + p { margin-top: 0.55em; }
 .ref-phase { font-family: var(--font-body); font-weight: 600; font-size: 1rem; color: var(--paper); margin: 18px 0 8px; }
 .ref-phase:first-of-type { margin-top: 0; }
+.ref-rich strong { color: var(--paper); font-weight: 600; }
+.ref-rich ul { list-style: none; margin: 0.55em 0 0; padding: 0; }
+.ref-rich ul:first-child { margin-top: 0; }
+.ref-rich p + ul { margin-top: 8px; }
+.ref-rich ul + p { margin-top: 18px; }
+.ref-rich li p { margin: 0; }
+.ref-rich li + li, .ref-steps li + li { margin-top: 10px; }
+.ref-rich li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
 .ref-steps { list-style: none; margin: 0; padding: 0; }
-.ref-steps li { position: relative; padding-left: 18px; font-size: 1.0625rem; line-height: 1.5; color: var(--paper-dim); }
+.ref-rich li, .ref-steps li { position: relative; padding-left: 18px; font-size: 1.0625rem; line-height: 1.5; color: var(--paper-dim); }
 .ref-steps li + li { margin-top: 10px; }
 .ref-steps li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
 .ref-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: clamp(28px,4vw,44px); }
@@ -58,11 +66,11 @@ bodyPage: "reference"
 <div class="wrap ref-body">
 <div>
 <h2>Contexte &amp; Objectifs</h2>
-{{ d.contexte | paras | safe }}
+<div class="ref-rich">{{ d.contexte | rich | safe }}</div>
 </div>
 <div>
 <h2>Méthodologie</h2>
-{% for ph in d.methodo %}{% if ph.phase %}<h3 class="ref-phase">{{ ph.phase }}</h3>{% endif %}<ul class="ref-steps">{% for s in ph.etapes %}<li>{{ s }}</li>{% endfor %}</ul>{% endfor %}
+<div class="ref-rich">{{ d.methodo | rich | safe }}</div>
 </div>
 </div>
 <div class="wrap">
