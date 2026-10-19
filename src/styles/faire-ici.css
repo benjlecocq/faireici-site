@@ -413,3 +413,25 @@ body[data-motion="off"] .hero-scroll .bar::after { animation: none; display: non
 
 .brand-word { color: var(--accent); }
 .brand-word .bracket { color: inherit; }
+
+/* ---- thème clair (bouton soleil/lune dans l'en-tête) ---------------------- */
+.theme-toggle{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--paper);transition:border-color .25s var(--ease),background .25s var(--ease);flex:none;}
+.theme-toggle:hover{border-color:var(--accent);color:var(--accent);}
+.theme-toggle svg{width:18px;height:18px;}
+.theme-toggle .i-sun{display:none;}
+html[data-theme="light"] .theme-toggle .i-sun{display:block;}
+html[data-theme="light"] .theme-toggle .i-moon{display:none;}
+html[data-theme="light"]{
+  --ink:#f4f0eb;--ink-2:#ebe5de;--ink-3:#e1d9d0;
+  --line:rgba(28,24,20,0.16);--line-soft:rgba(28,24,20,0.08);
+  --paper:#1a1816;--paper-dim:#4a443e;--muted:#6e665e;
+  --accent:#c4352f;--accent-hi:#d6433d;--accent-dim:rgba(196,53,47,0.1);
+  color-scheme:light;
+}
+html[data-theme="light"] .site-head[data-scrolled="true"]{background:rgba(244,240,235,0.82);}
+html[data-theme="light"] .submenu{box-shadow:0 24px 50px -24px rgba(28,24,20,0.28);}
+html[data-theme="light"] .ph{background-image:repeating-linear-gradient(-45deg,transparent 0 11px,rgba(28,24,20,0.04) 11px 12px);}
+html[data-theme="light"] .ph::after{background:rgba(244,240,235,0.7);}
+html[data-theme="light"] .partner__logo--dark{background:#141416;}
+/* texte posé sur photo : reste clair dans les deux thèmes */
+html[data-theme="light"] .card,html[data-theme="light"] .carousel,html[data-theme="light"] .profile__media{--paper:#f2ede9;--paper-dim:#d6d0ca;--muted:#b9b3ad;--line:rgba(242,237,233,0.25);}
