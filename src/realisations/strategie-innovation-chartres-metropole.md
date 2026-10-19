@@ -37,31 +37,29 @@ methodo: >-
   **Etape 1 : Etat des lieux et diagnostic**
 
 
-  * Positionnement stratégique de la Cité del'Innovation
+  * Positionnement stratégique de la Cité de l'Innovation
 
-  * Evaluation de l'écosystème Beauty Tech et desaxes d’optimisation
+  * Evaluation de l'écosystème Beauty Tech et des axes d’optimisation
 
   * Analyse de l’existant et des besoins en matière d'évènementiel
 
-  * Analyse des initiatives d’animation, de leurniveau de coordination et de leur lisibilité
+  * Analyse des initiatives d’animation, de leur niveau de coordination et de leur lisibilité
 
 
-  **Etape 2 : Co-construction de la stratégie**
+  **Etape 2 : Co-construction de la stratégie** 
 
 
   * Définition des objectifs à 5 ans et de latrajectoire de développement
 
-  * Définition des leviers stratégiques pourconsolider l’écosystème Beauty Tech Chartres
+  * Définition des leviers stratégiques pour consolider l’écosystème Beauty Tech Chartres
 
-  * Clarification du rôle de la Métropole sur levolet animation
+  * Clarification du rôle de la Métropole sur le volet animation
 
 
   **Etape 3 : Elaboration de la feuille de route**
 
 
-  * Structuration d’un programme d’actionspartenarial
+  * Structuration d’un programme d’actions partenarial
 
-  * Priorisation et déclinaison opérationnelle desactions
-
-  *
+  * Priorisation et déclinaison opérationnelle des actions
 ---
