@@ -10,14 +10,22 @@ localite: "Saint-Denis (93)"
 partenaires: "Institut Paris Région"
 expertises: ["diversification","offre-accueil","attractivite"]
 image: "/assets/plaine-commune.jpg"
-contexte: "Le territoire de Plaine Commune se déploie à la limite nord de Paris, en Seine-Saint-Denis, et regroupe 9 communes et 450 000 habitants. Porteur d'un « cluster » audiovisuel et numérique de réputation internationale, il constate que la filière se nourrit d'un vivier d'emplois et d'expertises peu alignés sur le capital humain du territoire, et connaît des fragilités qui ont érodé sa base d'emplois depuis la crise de 2008.\nDans ce contexte, Plaine Commune réinterroge son projet de territoire en matière d'écosystème ICC et souhaite élargir sa vision des ressorts d'attractivité et des leviers de développement de la filière dans toutes ses composantes."
-methodo:
-  - phase: "Diagnostic"
-    etapes: ["Revue documentaire et constitution du socle d'étude, cartographie de la filière, revue des offres et des besoins"]
-  - phase: "Prospective & scénarii"
-    etapes: ["Structuration de scénarios martyrs, consolidation en ateliers de travail, calage des orientations stratégiques"]
-  - phase: "Plan d'actions"
-    etapes: ["Déclinaison des objectifs et des leviers, consolidation en ateliers, formalisation de la feuille de route opérationnelle, du programme et des fiches actions"]
+contexte: |-
+  Le territoire de Plaine Commune se déploie à la limite nord de Paris, en Seine-Saint-Denis, et regroupe 9 communes et 450 000 habitants. Porteur d'un « cluster » audiovisuel et numérique de réputation internationale, il constate que la filière se nourrit d'un vivier d'emplois et d'expertises peu alignés sur le capital humain du territoire, et connaît des fragilités qui ont érodé sa base d'emplois depuis la crise de 2008.
+
+  Dans ce contexte, Plaine Commune réinterroge son projet de territoire en matière d'écosystème ICC et souhaite élargir sa vision des ressorts d'attractivité et des leviers de développement de la filière dans toutes ses composantes.
+methodo: |-
+  **Diagnostic**
+
+  - Revue documentaire et constitution du socle d'étude, cartographie de la filière, revue des offres et des besoins
+
+  **Prospective & scénarii**
+
+  - Structuration de scénarios martyrs, consolidation en ateliers de travail, calage des orientations stratégiques
+
+  **Plan d'actions**
+
+  - Déclinaison des objectifs et des leviers, consolidation en ateliers, formalisation de la feuille de route opérationnelle, du programme et des fiches actions
 pdf: ""
 description_seo: ""
 ---
