@@ -17,6 +17,10 @@ backend:
     deleteMedia: "Suppression média « {{path}} »"
 local_backend: true
 locale: "fr"
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
 site_url: "https://faireici-site.pages.dev"
 display_url: "https://faireici-site.pages.dev"
 logo_url: "/assets/logo-v3.png"
