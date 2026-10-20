@@ -11,7 +11,16 @@ function fi(s) {
 }
 const mdi = require('markdown-it')({ html: false, breaks: true, linkify: false });
 const toMd = v => Array.isArray(v) ? v.map(p => (p.phase ? '**' + p.phase + '**\n\n' : '') + (p.etapes || []).map(s => '- ' + s).join('\n')).join('\n\n') : String(v || '');
-const rich = v => mdi.render(toMd(v)).replace(/fair\[e\]ici/g, '<span class="brand-word">fair[e]ici</span>');
+// Texte collé depuis Word : puces « ▪ • ● » → vraies puces ; « Etape N : » / « Phase N » → titre en gras sur sa ligne
+const BUL = '[▪•●◦▫■□➢➤►]', BUL0 = '[▪•●◦▫■□➢➤►–·]';
+const tidy = s => String(s || '').replace(/\r/g, '').replace(/\u00a0/g, ' ').replace(/\\([*\-])/g, '$1')
+  .replace(new RegExp('\\s+' + BUL + '\\s+', 'g'), '\n- ')
+  .replace(new RegExp('^\\s*' + BUL0 + '\\s*', 'gm'), '- ')
+  .replace(/\s+((?:[EÉ]tape|Phase)\s*\d+\s*[:\-–])/g, '\n\n$1')
+  .replace(/^\s*(?:[-*]\s+)?\**((?:[EÉ]tape|Phase)\s*\d+\s*[:\-–][^\n]*?)\**\s*$/gm, '\n**$1**\n')
+  .replace(/([^\n])\n- /g, '$1\n\n- ').replace(/(^- [^\n]*)\n\n(?=- )/gm, '$1\n').replace(/(^- [^\n]*)\n(?!- |\n)/gm, '$1\n\n')
+  .replace(/\n{3,}/g, '\n\n').trim();
+const rich = v => mdi.render(tidy(toMd(v))).replace(/fair\[e\]ici/g, '<span class="brand-word">fair[e]ici</span>');
 const plain = v => toMd(v).replace(/\*\*/g, '').replace(/^\s*[-*]\s+/gm, '');
 const paras = s => String(s || '').split(/\n+/).map(x => x.trim()).filter(Boolean).map(x => '<p>' + fi(x) + '</p>').join('');
 
@@ -26,8 +35,9 @@ module.exports = function (cfg) {
   cfg.addFilter('json', v => JSON.stringify(v).replace(/</g, '\\u003c'));
   cfg.addFilter('excerpt', (s, n = 158) => { const t = plain(s).split(/\n+/)[0].trim(); return t.length > n ? t.slice(0, n - 1).replace(/\s+\S*$/, '') + '…' : t; });
   cfg.addFilter('expMap', list => JSON.stringify(Object.fromEntries(list.map(e => [e.key, e.nom]))));
+  const expList = v => Array.isArray(v) ? v : (v && typeof v === 'object' ? Object.values(v).filter(x => typeof x === 'string') : (v ? [v] : []));
   cfg.addFilter('projetsJson', list => JSON.stringify(list.map(it => { const d = it.data; return {
-    expertise: d.expertises || [], titre: d.titre || '', slug: d.slug, client: d.client || '', annee: String(d.annee || ''), budget: d.budget || '',
+    expertise: expList(d.expertises), titre: d.titre || '', slug: d.slug, client: d.client || '', annee: String(d.annee || ''), budget: d.budget || '',
     contactClient: d.contact_client || '', localite: d.localite || '', partenaires: d.partenaires || '', image: d.image || '', pdf: d.pdf || '',
     contexteHTML: d.contexte ? rich(d.contexte) : '', methodoHTML: d.methodo && d.methodo.length ? rich(d.methodo) : ''
   }; })).replace(/</g, '\\u003c'));
