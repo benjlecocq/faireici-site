@@ -2,6 +2,7 @@
    Les données (window.PROJETS, window.EXPERTISES) sont générées à partir du
    back office (/admin). Ne pas modifier les références ici. */
 var EXPERTISES = window.EXPERTISES || {};
+if (!Object.keys(EXPERTISES).length) EXPERTISES = {'diversification':'Résilience économique','offre-accueil':'Offre d\'accueil territoriale','attractivite':'Attractivité territoriale','programmation':'Programmation','ess':'Entrepreneuriat & ESS'};
 var PROJETS = window.PROJETS || [];
 
 /* ------------------------------------------------------------------------- */
@@ -59,7 +60,18 @@ html,body{margin:0;padding:0;background:#fff;-webkit-print-color-adjust:exact;pr
   function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
   /* expertise peut être une chaîne OU un tableau de clés */
-  function expKeys(p) { return Object.prototype.toString.call(p.expertise) === '[object Array]' ? p.expertise : [p.expertise]; }
+  function norm(s) { return String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); }
+  function toKey(v) {
+    var n = norm(v);
+    for (var k in EXPERTISES) { if (k === n || norm(EXPERTISES[k]) === n) return k; }
+    return n;
+  }
+  function expKeys(p) {
+    var v = p.expertise;
+    if (typeof v === 'string') v = v.split(/[,;]/);
+    if (Object.prototype.toString.call(v) !== '[object Array]') v = [];
+    return v.map(toKey).filter(Boolean);
+  }
   function hasExp(p, key) { return expKeys(p).indexOf(key) !== -1; }
   function expLabel(p) {
     if (p.categorie) return p.categorie;
@@ -72,7 +84,6 @@ html,body{margin:0;padding:0;background:#fff;-webkit-print-color-adjust:exact;pr
     filtersWrap.innerHTML = cats.map(function (c) {
       var key = c[0], label = c[1];
       var count = key === 'all' ? PROJETS.length : PROJETS.filter(function (p) { return hasExp(p, key); }).length;
-      if (key !== 'all' && count === 0) return '';
       return '<button class="filter" data-cat="' + key + '" aria-pressed="' + (key === current) + '">' +
              esc(label) + '<span class="count">' + count + '</span></button>';
     }).join('');
