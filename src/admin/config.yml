@@ -14,8 +14,8 @@ backend:
     deleteMedia: "Suppression média « {{path}} »"
 local_backend: true
 locale: "fr"
-site_url: "https://stellar-faloodeh-4b59b7.netlify.app"
-display_url: "https://stellar-faloodeh-4b59b7.netlify.app"
+site_url: "https://faireici.pages.dev"
+display_url: "https://faireici.pages.dev"
 logo_url: "/assets/logo-v3.png"
 media_folder: "src/assets/uploads"
 public_folder: "/assets/uploads"
@@ -106,7 +106,7 @@ collections:
         modes: ["rich_text"]
         buttons: ["bold","bulleted-list"]
         editor_components: []
-        hint: "Vous pouvez coller un texte déjà mis en forme. Conseil : titre de phase en gras, puis les étapes en liste à puces."
+        hint: "Collez votre texte tel quel : les puces Word (▪ •) deviennent de vraies puces et « Etape 1 : … » passe en gras sur sa ligne, automatiquement à la publication."
       - label: "Fiche PDF (facultatif)"
         name: "pdf"
         widget: "file"
