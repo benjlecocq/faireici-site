@@ -6,62 +6,65 @@ bodyPage: "conviction"
 {% extends "base.njk" %}
 {% set seo = { titre: conviction.seo_titre, description: conviction.seo_description } %}
 {% block style %}{% raw %}
-.role-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(32px,6vw,90px); align-items: start; }
-.conv-intro { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px,5vw,72px); }
-.conv-intro p { color: var(--paper-dim); font-size: 1.0625rem; line-height: 1.6; }
-@media (max-width: 900px){ .role-grid, .conv-intro { grid-template-columns: 1fr; } }
-
-/* expertises-style list (reprise de l'accueil) */
-.exp-list { }
-.exp-row { display: grid; grid-template-columns: 40px 1fr auto; gap: clamp(12px,1.8vw,26px); align-items: center; padding: clamp(11px,1.3vw,15px) clamp(12px,1.6vw,18px); border-radius: 12px; position: relative; }
-.exp-row + .exp-row { margin-top: 2px; }
-.exp-row__cell { min-width: 0; display: flex; flex-direction: column; }
-.exp-row__title { display: block; font-family: var(--font-display); font-weight: 500; font-size: clamp(1.02rem, 1.35vw, 1.22rem); letter-spacing: -0.02em; line-height: 1.12; }
-.exp-row__desc { display: block; color: var(--muted); max-width: 60ch; font-size: clamp(0.84rem,0.95vw,0.92rem); line-height: 1.45; margin-top: 3px; }
-.exp-row .num { align-self: start; padding-top: 0.2em; }
+.cv-block{padding-block:clamp(44px,5.5vw,80px);border-top:1px solid var(--line);}
+.cv-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(28px,5vw,80px);align-items:start;}
+.cv-head .h-lg{margin-top:14px;}
+.cv-intro__title{font-family:var(--font-display);font-weight:500;font-size:clamp(1.45rem,2.4vw,2.1rem);line-height:1.2;letter-spacing:-0.02em;color:var(--paper);text-wrap:pretty;}
+.cv-intro__phrases{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,3vw,44px);margin-top:clamp(28px,3.5vw,48px);}
+.cv-intro__phrases p{margin:0;padding-top:16px;border-top:2px solid var(--paper);color:var(--paper-dim);font-size:1.0625rem;line-height:1.6;}
+.cv-role__phrase{font-family:var(--font-display);font-weight:500;font-size:clamp(1.15rem,1.6vw,1.4rem);line-height:1.3;letter-spacing:-0.01em;color:var(--paper);margin:0 0 clamp(18px,2.4vw,30px);}
+.cv-ledger{list-style:none;margin:0;padding:0;border-top:1px solid var(--line);}
+.cv-ledger li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:16px;align-items:baseline;padding:clamp(14px,1.6vw,20px) 0;border-bottom:1px solid var(--line);font-size:clamp(1rem,1.25vw,1.15rem);line-height:1.4;color:var(--paper);}
+.cv-ledger li::first-letter{text-transform:uppercase;}
+.cv-ledger .num{color:var(--accent);}
+.cv-steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:clamp(28px,3.5vw,48px);}
+.cv-step{background:var(--ink-2);padding:clamp(20px,2vw,28px);display:flex;flex-direction:column;gap:10px;min-height:clamp(200px,18vw,250px);}
+.cv-step__n{font-family:var(--font-display);font-weight:500;font-size:clamp(1.9rem,2.8vw,2.6rem);line-height:1;letter-spacing:-0.03em;color:var(--accent);}
+.cv-step__t{font-family:var(--font-display);font-weight:500;font-size:clamp(1.1rem,1.4vw,1.28rem);letter-spacing:-0.02em;color:var(--paper);margin-top:14px;padding-top:18px;border-top:1px solid var(--line);}
+.cv-step__d{color:var(--paper-dim);font-size:0.95rem;line-height:1.5;margin:0;}
+@media (max-width:1000px){.cv-steps{grid-template-columns:repeat(2,minmax(0,1fr));}.cv-step{min-height:0;}.cv-step:last-child:nth-child(odd){grid-column:1/-1;}}
+@media (max-width:900px){.cv-grid,.cv-intro__phrases{grid-template-columns:minmax(0,1fr);}}
+@media (max-width:560px){.cv-steps{grid-template-columns:minmax(0,1fr);}.cv-step:last-child:nth-child(odd){grid-column:auto;}}
 {% endraw %}{% endblock %}
 {% block main %}
 <section class="page-hero wrap">
 <p class="eyebrow" data-reveal>{{ conviction.surtitre }}</p>
 <h1 class="page-hero__title mt-s" data-reveal data-reveal-delay="1">{{ conviction.titre | fi | safe }}</h1>
 </section>
-<section class="section section--tight">
-<div class="wrap conv-intro">
-<div data-reveal><h2 class="h-lg">{{ conviction.intro_titre | fi | safe }}</h2></div>
-<div data-reveal data-reveal-delay="1">{% for ph in conviction.intro_phrases %}
-<p class="statement{% if not loop.first %} mt-s{% endif %}" style="color:var(--paper)">{{ ph | fi | safe }}</p>{% endfor %}
-</div>
+<section class="wrap cv-block">
+<div data-reveal><p class="cv-intro__title">{{ conviction.intro_titre | fi | safe }}</p></div>
+<div class="cv-intro__phrases" data-reveal data-reveal-delay="1">{% for ph in conviction.intro_phrases %}
+<p>{{ ph | fi | safe }}</p>{% endfor %}
 </div>
 </section>
-<section class="section">
-<div class="wrap">
-<div class="role-grid">
-<div data-reveal>
+<section class="wrap cv-block">
+<div class="cv-grid">
+<div class="cv-head" data-reveal>
 <p class="eyebrow">{{ conviction.role_surtitre }}</p>
-<h2 class="h-lg mt-s">{{ conviction.role_titre | fi | safe }}</h2>
-<p class="statement mt-s" style="color:var(--paper)">{{ conviction.role_phrase | fi | safe }}</p>
+<h2 class="h-lg">{{ conviction.role_titre | fi | safe }}</h2>
 </div>
-<ul class="ticklist" data-reveal data-reveal-delay="1">{% for li in conviction.role_liste %}
-<li>{{ li | fi | safe }}</li>{% endfor %}
+<div data-reveal data-reveal-delay="1">
+<p class="cv-role__phrase">{{ conviction.role_phrase | fi | safe }}</p>
+<ul class="cv-ledger">{% for li in conviction.role_liste %}
+<li><span class="num">{{ "0" if loop.index < 10 }}{{ loop.index }}</span><span>{{ li | fi | safe }}</span></li>{% endfor %}
 </ul>
 </div>
 </div>
 </section>
-<section class="section">
-<div class="wrap">
-<div class="split split--top" style="margin-bottom: clamp(28px,4vw,52px)">
-<div data-reveal>
+<section class="wrap cv-block">
+<div class="cv-grid">
+<div class="cv-head" data-reveal>
 <p class="eyebrow">{{ conviction.methode_surtitre }}</p>
-<h2 class="h-lg mt-s">{{ conviction.methode_titre | fi | safe }}</h2>
+<h2 class="h-lg">{{ conviction.methode_titre | fi | safe }}</h2>
 </div>
 <div></div>
 </div>
-<div class="exp-list">{% for et in conviction.etapes %}
-<div class="exp-row" data-reveal>
-<span class="num">{{ "0" if loop.index < 10 }}{{ loop.index }}</span>
-<span class="exp-row__cell"><span class="exp-row__title">{{ et.titre }}</span><span class="exp-row__desc">{{ et.texte | fi | safe }}</span></span>
+<div class="cv-steps" data-reveal>{% for et in conviction.etapes %}
+<div class="cv-step">
+<span class="cv-step__n">{{ "0" if loop.index < 10 }}{{ loop.index }}</span>
+<span class="cv-step__t">{{ et.titre }}</span>
+<p class="cv-step__d">{{ et.texte | fi | safe }}</p>
 </div>{% endfor %}
-</div>
 </div>
 </section>
 {% endblock %}
