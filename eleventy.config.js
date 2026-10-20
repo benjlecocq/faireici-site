@@ -26,7 +26,8 @@ const paras = s => String(s || '').split(/\n+/).map(x => x.trim()).filter(Boolea
 
 module.exports = function (cfg) {
   cfg.setNunjucksEnvironmentOptions({ autoescape: true });
-  cfg.addPassthroughCopy({ 'src/assets': 'assets', 'src/styles': 'styles', 'src/scripts': 'scripts', 'src/admin': 'admin' });
+  cfg.addPassthroughCopy({ 'src/assets': 'assets', 'src/styles': 'styles', 'src/scripts': 'scripts', 'src/admin': 'admin',
+    'node_modules/decap-cms/dist/decap-cms.js': 'vendor/decap-cms.js', 'node_modules/html2canvas/dist/html2canvas.min.js': 'vendor/html2canvas.min.js', 'node_modules/jspdf/dist/jspdf.umd.min.js': 'vendor/jspdf.umd.min.js' });
   cfg.addFilter('fi', fi);
   cfg.addFilter('paras', paras);
   cfg.addFilter('rich', rich);

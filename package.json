@@ -2,8 +2,14 @@
   "name": "faireici-site",
   "private": true,
   "scripts": {
-    "build": "eleventy",
+    "build": "eleventy && node optimize-images.js",
     "start": "eleventy --serve"
+  },
+  "dependencies": {
+    "decap-cms": "3.8.3",
+    "html2canvas": "1.4.1",
+    "jspdf": "2.5.1",
+    "sharp": "0.33.5"
   },
   "devDependencies": {
     "@11ty/eleventy": "2.0.1",

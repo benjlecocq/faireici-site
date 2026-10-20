@@ -84,14 +84,10 @@ bodyPage: "contact"
           <textarea name="message" placeholder="Décrivez votre territoire, votre enjeu, votre échéance…" required></textarea>
           <span class="err">Dites-nous en quelques mots de quoi il s'agit.</span>
         </div>
-        <div class="field">
-          <label>Pièce jointe</label>
-          <label class="file-drop" for="attach"><span class="file-drop__btn">+ Joindre un fichier</span><span class="file-drop__name" id="attachName">PDF, Word, image — 10 Mo max</span></label>
-          <input type="file" id="attach" name="piece_jointe" accept=".pdf,.doc,.docx,.odt,.jpg,.jpeg,.png" hidden>
-        </div>
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
         <div class="form-submit">
           <button type="submit" class="btn btn--solid">Envoyer le message <span class="arrow">→</span></button>
-          <span class="form-note">* champs obligatoires</span>
+          <span class="form-note" id="formNote">* champs obligatoires</span>
         </div>
       </form>
 
@@ -142,13 +138,6 @@ bodyPage: "contact"
     return ok;
   }
 
-  var attach = document.getElementById('attach'), attachName = document.getElementById('attachName');
-  attach.addEventListener('change', function(){
-    var f = attach.files[0];
-    if (!f) { attachName.textContent = 'PDF, Word, image — 10 Mo max'; return; }
-    if (f.size > 10*1024*1024) { attach.value=''; attachName.textContent = 'Fichier trop lourd (10 Mo max)'; return; }
-    attachName.textContent = f.name;
-  });
   form.querySelectorAll('[data-field]').forEach(function(f){
     var input = f.querySelector('input, textarea');
     if (input) input.addEventListener('input', function(){ if (f.classList.contains('invalid')) validate(f); });
@@ -163,13 +152,29 @@ bodyPage: "contact"
       if (firstBad) firstBad.focus();
       return;
     }
-    form.classList.add('hide');
-    success.classList.add('show');
+    var btn = form.querySelector('button[type=submit]'), note = document.getElementById('formNote');
+    var data = new FormData(form);
+    data.append('access_key', '20f88e26-da80-4050-abef-e75094e8bb89');
+    data.append('subject', 'Nouveau message depuis le site fair[e]ici');
+    data.append('from_name', 'Site fair[e]ici');
+    var intents = []; document.querySelectorAll('#intentions .chip[aria-pressed="true"]').forEach(function(c){ intents.push(c.textContent.trim()); });
+    if (intents.length) data.append('intentions', intents.join(', '));
+    var em = form.querySelector('input[type=email]'); if (em) data.append('replyto', em.value.trim());
+    btn.disabled = true; note.textContent = 'Envoi en cours…';
+    fetch('https://api.web3forms.com/submit', { method: 'POST', body: data })
+      .then(function(r){ return r.json(); })
+      .then(function(res){
+        if (!res.success) throw new Error(res.message);
+        form.classList.add('hide');
+        success.classList.add('show');
+      })
+      .catch(function(){ note.textContent = "L'envoi a échoué. Écrivez-nous directement à faireici@faireici.com"; })
+      .then(function(){ btn.disabled = false; });
   });
 
   document.getElementById('resetForm').addEventListener('click', function(){
     form.reset();
-    attachName.textContent = 'PDF, Word, image — 10 Mo max';
+    document.getElementById('formNote').textContent = '* champs obligatoires';
     form.querySelectorAll('[data-field]').forEach(function(f){ f.classList.remove('invalid'); });
     document.querySelectorAll('#intentions .chip').forEach(function(c){ c.setAttribute('aria-pressed','false'); });
     success.classList.remove('show');
