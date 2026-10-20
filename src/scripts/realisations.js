@@ -15,7 +15,7 @@ html,body{margin:0;padding:0;background:#fff;-webkit-print-color-adjust:exact;pr
 .slide:last-child{page-break-after:auto;break-after:auto;}
 .slide__top{display:flex;align-items:center;padding-bottom:4mm;border-bottom:0.5pt solid #ddd8d3;flex:none;}
 .slide__logo{font-family:'Source Code Pro',ui-monospace,monospace;font-weight:600;font-size:17pt;color:#d6433d;line-height:1;letter-spacing:-0.01em;}
-.slide__band{display:grid;grid-template-columns:40% 60%;gap:12mm;margin-top:6mm;align-items:stretch;flex:none;}
+.slide__band{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:12mm;margin-top:6mm;align-items:stretch;flex:none;}
 .slide__meta{display:grid;grid-template-columns:1fr 1fr;gap:4mm 8mm;align-content:start;padding-bottom:4mm;border-bottom:0.5pt solid #ddd8d3;}
 .slide__meta dt{font-family:var(--font-mono);font-size:6.5pt;letter-spacing:0.1em;text-transform:uppercase;color:#a8a199;}
 .slide__meta dd{margin:1.5mm 0 0;font-family:var(--font-mono);font-size:8.5pt;color:#2b2825;}
@@ -23,10 +23,10 @@ html,body{margin:0;padding:0;background:#fff;-webkit-print-color-adjust:exact;pr
 .slide__client{font-family:var(--font-mono);font-size:8pt;color:#6b655f;}
 .slide__title{font-family:var(--font-display);font-weight:600;font-size:16pt;line-height:1.1;letter-spacing:-0.02em;color:#141416;margin:2.5mm 0 0;text-wrap:balance;}
 .slide__partners{font-family:var(--font-mono);font-size:7.5pt;color:#a8a199;margin-top:2mm;}
-.slide__body{display:grid;grid-template-columns:40% 60%;gap:12mm;margin-top:6mm;flex:1 1 auto;align-items:stretch;min-height:0;}
+.slide__body{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:12mm;margin-top:6mm;flex:1 1 auto;align-items:stretch;min-height:0;}
 .slide__left{position:relative;min-height:0;}
 .slide__media{position:absolute;left:0;right:0;top:0;bottom:5mm;border-radius:1.5mm;overflow:hidden;box-shadow:0 0 0 0.75pt #e2ddd8;background-size:cover;background-position:center;background-repeat:no-repeat;}
-.slide__cols{display:grid;grid-template-columns:1fr 1fr;gap:8mm;align-content:start;min-height:0;}
+.slide__cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8mm;align-content:start;min-height:0;}
 .slide__sec{break-inside:avoid;}
 .slide__sec h4{font-family:var(--font-mono);font-weight:400;font-size:7pt;letter-spacing:0.12em;text-transform:uppercase;color:#d6433d;margin:0 0 3mm;}
 .slide__sec p{font-size:8.5pt;line-height:1.45;color:#3f3a35;margin:0 0 2mm;}
