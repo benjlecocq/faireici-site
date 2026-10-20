@@ -14,8 +14,8 @@ backend:
     deleteMedia: "Suppression média « {{path}} »"
 local_backend: true
 locale: "fr"
-site_url: "https://faireici.pages.dev"
-display_url: "https://faireici.pages.dev"
+site_url: "https://faireici-site.pages.dev"
+display_url: "https://faireici-site.pages.dev"
 logo_url: "/assets/logo-v3.png"
 media_folder: "src/assets/uploads"
 public_folder: "/assets/uploads"
