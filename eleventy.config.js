@@ -35,9 +35,10 @@ module.exports = function (cfg) {
   cfg.addFilter('json', v => JSON.stringify(v).replace(/</g, '\\u003c'));
   cfg.addFilter('excerpt', (s, n = 158) => { const t = plain(s).split(/\n+/)[0].trim(); return t.length > n ? t.slice(0, n - 1).replace(/\s+\S*$/, '') + '…' : t; });
   cfg.addFilter('expMap', list => JSON.stringify(Object.fromEntries(list.map(e => [e.key, e.nom]))));
-  const expList = v => Array.isArray(v) ? v : (v && typeof v === 'object' ? Object.values(v).filter(x => typeof x === 'string') : (v ? [v] : []));
+  const fs = require('fs'), matter = require('gray-matter');
+  const rawExp = it => { try { const v = matter(fs.readFileSync(it.inputPath, 'utf8')).data.expertises; return Array.isArray(v) ? v : (v ? String(v).split(/[,;]/).map(s => s.trim()) : []); } catch (e) { return []; } };
   cfg.addFilter('projetsJson', list => JSON.stringify(list.map(it => { const d = it.data; return {
-    expertise: expList(d.expertises), titre: d.titre || '', slug: d.slug, client: d.client || '', annee: String(d.annee || ''), budget: d.budget || '',
+    expertise: rawExp(it), titre: d.titre || '', slug: d.slug, client: d.client || '', annee: String(d.annee || ''), budget: d.budget || '',
     contactClient: d.contact_client || '', localite: d.localite || '', partenaires: d.partenaires || '', image: d.image || '', pdf: d.pdf || '',
     contexteHTML: d.contexte ? rich(d.contexte) : '', methodoHTML: d.methodo && d.methodo.length ? rich(d.methodo) : ''
   }; })).replace(/</g, '\\u003c'));
