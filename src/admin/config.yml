@@ -1,11 +1,14 @@
 # Back office fair[e]ici — configuration Decap CMS
 # Seul le bloc "backend" ci-dessous est à compléter (voir LISEZ-MOI.md, étape 3).
 backend:
-  name: "git-gateway"
-  repo: "VOTRE-COMPTE/faireici-site"
-  branch: "main"
-  identity_url: "https://auth.decapbridge.com/sites/A-REMPLACER"
-  gateway_url: "https://gateway.decapbridge.com"
+  name: git-gateway
+  repo: benjlecocq/faireici-site
+  branch: main
+  auth_type: pkce
+  base_url: https://auth.decapbridge.com
+  auth_endpoint: /sites/c10419ba-f5ac-40b5-bfea-fae3eea6196a/pkce
+  auth_token_endpoint: /sites/c10419ba-f5ac-40b5-bfea-fae3eea6196a/token
+  gateway_url: https://gateway.decapbridge.com
   commit_messages:
     create: "Ajout {{collection}} « {{slug}} »"
     update: "Mise à jour {{collection}} « {{slug}} »"
