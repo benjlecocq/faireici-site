@@ -280,7 +280,7 @@ collections:
                 widget: "text"
                 hint: "Mise en forme : [mot] → en rouge entre crochets · *mot* → en rouge · **mot** → gras"
       - name: "ressources"
-        label: "Ressources (équipe & partenaires)"
+        label: "Équipe (associés & partenaires)"
         file: "src/_data/ressources.json"
         fields:
           - label: "Titre Google (onglet du navigateur)"
@@ -681,6 +681,16 @@ collections:
             name: "telephone"
             widget: "string"
             hint: "Ex. +33624731785"
+          - label: "Téléphone fixe (affiché, pied de page)"
+            name: "telephone_fixe_affiche"
+            widget: "string"
+            required: false
+            default: "09 75 70 40 16"
+          - label: "Téléphone fixe (format international)"
+            name: "telephone_fixe"
+            widget: "string"
+            required: false
+            default: "+33975704016"
           - label: "Adresses"
             name: "adresses"
             widget: "list"

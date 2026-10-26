@@ -53,6 +53,15 @@ bodyPage: "expertise"
 </div>
 </div>
 </section>
+{% set exemples = collections.projets | recent(e.key, 3) %}{% if exemples.length %}<section class="section section--tight">
+<div class="wrap">
+<p class="eyebrow" data-reveal>Exemples de réalisations</p>
+<div class="mt-m"><div class="proj-grid">{% for r in exemples %}
+<a class="card" href="/realisations/{{ r.data.slug }}.html" data-reveal>{% if r.data.image %}<img src="{{ r.data.image | img }}" alt="{{ r.data.titre }}" loading="lazy">{% endif %}<span class="card__arrow"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.5"><path d="M3 13L13 3M13 3H5M13 3V11"/></svg></span><span class="card__body"><span class="card__title">{{ r.data.titre }}</span><span class="card__client">{{ r.data.client }}</span></span></a>{% endfor %}
+</div></div>
+<div class="proj-more" data-reveal><a href="/realisations.html?f={{ e.key }}" class="btn">Exemples de réalisations <span class="arrow">→</span></a></div>
+</div>
+</section>{% endif %}
 <section class="section--tight">
 <div class="wrap">
 <div class="exp-nav" data-reveal>

@@ -10,7 +10,7 @@ bodyPage: "home"
 /* ============ HOME-SPECIFIC ============ */
 
 /* hero shell */
-.hero { min-height: 100svh; display: flex; align-items: flex-end; padding-top: 140px; padding-bottom: clamp(48px, 7vw, 96px); position: relative; }
+.hero { min-height: 100svh; display: flex; align-items: center; padding-top: 110px; padding-bottom: clamp(32px, 4vw, 56px); position: relative; }
 [data-hero-block] { display: none !important; }
 html[data-hero="a"] [data-hero-block="a"],
 html[data-hero="b"] [data-hero-block="b"] { display: block !important; }
@@ -82,7 +82,7 @@ html[data-hero="b"] .hero-scroll { display: none; }
 .exp-row:hover { background: var(--ink-2); }
 .exp-row:hover .exp-row__title { color: var(--accent); }
 .exp-row:hover .num { color: var(--accent); }
-.exp-row:hover .exp-row__arrow { background: var(--accent); border-color: var(--accent); transform: rotate(-45deg); }
+.exp-row:hover .exp-row__arrow { background: var(--accent); border-color: var(--accent); transform: rotate(45deg); }
 .exp-row:hover .exp-row__arrow svg { stroke: #fff; }
 
 /* cta band */
@@ -175,6 +175,18 @@ html[data-hero="b"] .hero-scroll { display: none; }
 </div>
 </div>
 </section>
+{% set derniers = collections.projets | recent('', 3) %}{% if derniers.length %}<section class="section section--tight">
+<div class="wrap">
+<div data-reveal style="margin-bottom: clamp(32px,4vw,56px)">
+<p class="eyebrow">Réalisations</p>
+<h2 class="h-xl mt-s">Nos dernières <span class="bracket">[réalisations]</span></h2>
+</div>
+<div class="proj-grid">{% for r in derniers %}
+<a class="card" href="/realisations/{{ r.data.slug }}.html" data-reveal>{% if r.data.image %}<img src="{{ r.data.image | img }}" alt="{{ r.data.titre }}" loading="lazy">{% endif %}<span class="card__arrow"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.5"><path d="M3 13L13 3M13 3H5M13 3V11"/></svg></span><span class="card__body"><span class="card__title">{{ r.data.titre }}</span><span class="card__client">{{ r.data.client }}</span></span></a>{% endfor %}
+</div>
+<div class="proj-more" data-reveal><a href="/realisations.html" class="btn">Autres réalisations <span class="arrow">→</span></a></div>
+</div>
+</section>{% endif %}
 {% endblock %}
 {% block scripts %}{% if accueil.carrousel.length > 1 %}{% raw %}<script>
 (function(){

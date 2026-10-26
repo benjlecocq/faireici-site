@@ -54,6 +54,7 @@ html,body{margin:0;padding:0;background:#fff;-webkit-print-color-adjust:exact;pr
   if (!grid) return;
 
   var current = 'all';
+  try { var qf = new URLSearchParams(location.search).get('f'); if (qf && EXPERTISES[qf]) current = qf; } catch (e) {}
   var bookMode = false;
   var selected = [];   // array of project indices, in selection order
 
@@ -93,6 +94,7 @@ html,body{margin:0;padding:0;background:#fff;-webkit-print-color-adjust:exact;pr
         filtersWrap.querySelectorAll('.filter').forEach(function (x) {
           x.setAttribute('aria-pressed', x.getAttribute('data-cat') === current);
         });
+        try { history.replaceState(null, '', current === 'all' ? location.pathname : '?f=' + current); } catch (e) {}
         render();
       });
     });

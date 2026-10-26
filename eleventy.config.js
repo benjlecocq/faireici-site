@@ -26,7 +26,7 @@ const paras = s => String(s || '').split(/\n+/).map(x => x.trim()).filter(Boolea
 
 module.exports = function (cfg) {
   cfg.setNunjucksEnvironmentOptions({ autoescape: true });
-  cfg.addPassthroughCopy({ 'src/assets': 'assets', 'src/styles': 'styles', 'src/scripts': 'scripts', 'src/admin': 'admin',
+  cfg.addPassthroughCopy({ 'src/assets': 'assets', 'src/styles': 'styles', 'src/scripts': 'scripts', 'src/admin': 'admin', 'src/_redirects': '_redirects',
     'node_modules/decap-cms/dist/decap-cms.js': 'vendor/decap-cms.js', 'node_modules/html2canvas/dist/html2canvas.min.js': 'vendor/html2canvas.min.js', 'node_modules/jspdf/dist/jspdf.umd.min.js': 'vendor/jspdf.umd.min.js' });
   cfg.addFilter('fi', fi);
   cfg.addFilter('paras', paras);
@@ -38,9 +38,14 @@ module.exports = function (cfg) {
   cfg.addFilter('expMap', list => JSON.stringify(Object.fromEntries(list.map(e => [e.key, e.nom]))));
   const fs = require('fs'), matter = require('gray-matter');
   const rawExp = it => { try { const v = matter(fs.readFileSync(it.inputPath, 'utf8')).data.expertises; return Array.isArray(v) ? v : (v ? String(v).split(/[,;]/).map(s => s.trim()) : []); } catch (e) { return []; } };
+  const img = s => { let u = String(s || '').trim(); if (!u || /^https?:/i.test(u)) return u; u = u.replace(/^\.?\/?(src\/)?/, '/'); try { u = decodeURI(u); } catch (e) {} return encodeURI(u); };
+  cfg.addFilter('img', img);
+  const yearOf = it => Math.max(0, ...(String(it.data.annee || '').match(/\d{4}/g) || []).map(Number));
+  cfg.addFilter('recent', (list, key, n = 3) => (list || []).filter(it => !key || rawExp(it).includes(key)).sort((a, b) => yearOf(b) - yearOf(a) || (a.data.ordre || 999) - (b.data.ordre || 999)).slice(0, n));
+  cfg.addFilter('expCount', (list, key) => (list || []).filter(it => !key || rawExp(it).includes(key)).length);
   cfg.addFilter('projetsJson', list => JSON.stringify(list.map(it => { const d = it.data; return {
     expertise: rawExp(it), titre: d.titre || '', slug: d.slug, client: d.client || '', annee: String(d.annee || ''), budget: d.budget || '',
-    contactClient: d.contact_client || '', localite: d.localite || '', partenaires: d.partenaires || '', image: d.image || '', pdf: d.pdf || '',
+    contactClient: d.contact_client || '', localite: d.localite || '', partenaires: d.partenaires || '', image: img(d.image), pdf: d.pdf || '',
     contexteHTML: d.contexte ? rich(d.contexte) : '', methodoHTML: d.methodo && d.methodo.length ? rich(d.methodo) : ''
   }; })).replace(/</g, '\\u003c'));
   cfg.addCollection('projets', api => api.getFilteredByGlob('src/realisations/*.md').sort((a, b) => (a.data.ordre || 999) - (b.data.ordre || 999)));

@@ -41,6 +41,11 @@ bodyPage: "contact"
 .contact-info { display: grid; gap: 4px; }
 .contact-info a.big { font-family: var(--font-body); font-weight: 500; font-size: clamp(1rem,1.15vw,1.1rem); letter-spacing: 0; color: var(--paper-dim); transition: color .25s var(--ease); }
 .contact-info a.big:hover { color: var(--accent); }
+.cinfo { display: grid; grid-template-columns: 44px 1fr; gap: 16px; align-items: start; }
+.cinfo + .cinfo { margin-top: 22px; }
+.cinfo__ic { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; color: var(--accent); }
+.cinfo__ic svg { width: 19px; height: 19px; }
+.cinfo__k { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; padding-top: 3px; }
 .contact-addr { font-family: var(--font-body); font-size: clamp(1rem,1.15vw,1.1rem); line-height: 1.5; color: var(--paper-dim); max-width: 22ch; }
 
 @media (max-width: 900px){ .contact-grid { grid-template-columns: 1fr; } .row-2 { grid-template-columns: 1fr; } }
@@ -102,14 +107,13 @@ bodyPage: "contact"
     <!-- RIGHT : INFOS -->
     <div data-reveal data-reveal-delay="1">
       <p class="eyebrow">Contactez-nous</p>
-      <div class="contact-info mt-s">
-        {% endraw %}<a class="big" href="mailto:{{ site.email }}">{{ site.email }}</a>{% raw %}
-        {% endraw %}<a class="big" href="tel:{{ site.telephone }}" style="margin-top:6px">{{ site.telephone_affiche }}</a>{% raw %}
+      <div class="contact-info mt-m">
+        {% endraw %}<div class="cinfo"><span class="cinfo__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg></span><div><p class="cinfo__k">E-mail</p><a class="big" href="mailto:{{ site.email }}">{{ site.email }}</a></div></div>
+<div class="cinfo"><span class="cinfo__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span><div><p class="cinfo__k">Téléphone</p><a class="big" href="tel:{{ site.telephone }}">{{ site.telephone_affiche }}</a></div></div>{% raw %}
       </div>
       <hr class="hairline mt-l">
       <div class="mt-l">
-        {% endraw %}{% for a in site.adresses %}<p class="eyebrow eyebrow--plain" style="color:var(--muted);margin:{{ "0 0 12px" if loop.first else "22px 0 12px" }}">{{ a.libelle }}</p>
-<p class="contact-addr">{{ a.rue }}<br>{{ a.code_postal }} {{ a.ville }}</p>
+        {% endraw %}{% for a in site.adresses %}<div class="cinfo"><span class="cinfo__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><div><p class="cinfo__k">{{ a.libelle }}</p><p class="contact-addr">{{ a.rue }}<br>{{ a.code_postal }} {{ a.ville }}</p></div></div>
 {% endfor %}{% raw %}
       </div>
     </div>

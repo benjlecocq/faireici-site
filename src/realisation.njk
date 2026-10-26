@@ -10,7 +10,7 @@ bodyPage: "reference"
 ---
 {% extends "base.njk" %}
 {% set d = r.data %}
-{% set seo = { titre: d.client + ' - ' + d.titre + ' - fair[e]ici', description: d.description_seo or (d.contexte | excerpt), image: d.image, type: 'article' } %}
+{% set seo = { titre: d.client + ' - ' + d.titre + ' - fair[e]ici', description: d.description_seo or (d.contexte | excerpt), image: (d.image | img), type: 'article' } %}
 {% block head %}<script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":{{ d.titre | json | safe }},"dateCreated":{{ (d.annee | string) | json | safe }},"locationCreated":{"@type":"Place","name":{{ d.localite | json | safe }}},"provider":{"@type":"ProfessionalService","name":"fair[e]ici","url":{{ (site.url + '/') | json | safe }}},"sourceOrganization":{"@type":"Organization","name":{{ d.client | json | safe }}},"url":{{ (site.url + page.url) | json | safe }},"image":{{ (site.url + d.image) | json | safe }}}</script>{% endblock %}
 {% block style %}{% raw %}
 .ref-hero { padding-top: clamp(120px,14vh,180px); padding-bottom: clamp(20px,2.6vw,34px); }
@@ -50,6 +50,10 @@ bodyPage: "reference"
 .ref-actions{display:flex;flex-wrap:wrap;align-items:center;gap:18px 28px;margin-top:clamp(24px,3vw,36px)}{% endblock %}
 {% block main %}
 <section class="ref-hero wrap">
+<nav class="filters" aria-label="Filtrer les réalisations" style="margin-bottom:clamp(22px,2.6vw,32px)">
+<a class="filter" href="/realisations.html">Tout voir<span class="count">{{ collections.projets.length }}</span></a>{% for e in exp %}
+<a class="filter" href="/realisations.html?f={{ e.key }}"{% if d.expertises and e.key in d.expertises %} aria-current="true"{% endif %}>{{ e.nom }}<span class="count">{{ collections.projets | expCount(e.key) }}</span></a>{% endfor %}
+</nav>
 <p class="crumb"><a href="/">Accueil</a><span class="sep">/</span><a href="/realisations.html">Réalisations</a><span class="sep">/</span><span>{{ d.client }}</span></p>
 <p class="ref-client mt-s">{{ d.client }}</p>
 <h1 class="ref-title">{{ d.titre }}</h1>
@@ -60,7 +64,7 @@ bodyPage: "reference"
 {% if d.contact_client %}<div class="ref-meta__cell"><dt>Contact client</dt><dd>{{ d.contact_client }}</dd></div>{% endif %}
 {% if d.localite %}<div class="ref-meta__cell"><dt>Localité</dt><dd>{{ d.localite }}</dd></div>{% endif %}
 </dl>
-{% if d.image %}<div class="ref-media"><img src="{{ d.image }}" alt="{{ d.titre }}"></div>{% endif %}
+{% if d.image %}<div class="ref-media"><img src="{{ d.image | img }}" alt="{{ d.titre }}"></div>{% endif %}
 </section>
 <section class="section section--tight">
 <div class="wrap ref-body">
@@ -77,6 +81,7 @@ bodyPage: "reference"
 <div class="ref-tags">{% for k in d.expertises %}{% for e in exp %}{% if e.key == k %}<a href="/{{ e.page }}.html">{{ e.nom }}</a>{% endif %}{% endfor %}{% endfor %}</div>
 <div class="ref-actions">
 {% if d.pdf %}<a class="btn" href="{{ d.pdf }}" target="_blank" rel="noopener">Télécharger la fiche PDF <span class="arrow">↓</span></a>{% endif %}
+<a class="btn btn--solid" href="/contact.html">Parlons de votre projet <span class="arrow">→</span></a>
 <a class="ref-back" href="/realisations.html">← Toutes les réalisations</a>
 </div>
 </div>
