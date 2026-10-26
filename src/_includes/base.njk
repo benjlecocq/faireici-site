@@ -56,6 +56,11 @@
 {% block main %}{% endblock %}
 </main>
 {% block aftermain %}{% endblock %}
+{% if navKey != 'contact' %}<section class="cta-red"><div class="wrap" data-reveal>
+<h2>Parlons de votre projet.</h2>
+<p>{{ contact.texte | fi | safe }}</p>
+<a href="/contact.html" class="btn">Prendre contact <span class="arrow">→</span></a>
+</div></section>{% endif %}
 <footer class="site-foot">
 <div class="wrap">
 <div class="foot-top">
