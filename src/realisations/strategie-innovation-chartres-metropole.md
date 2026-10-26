@@ -12,7 +12,7 @@ expertises:
   - attractivite
   - diversification
   - ess
-image: /assets/uploads/2-6-scaled.jpg
+image: /assets/uploads/chartres.jpg
 contexte: >-
   Chartres métropole dispose d'un tissu économique dynamique, adossé à des
   filières porteuses, en particulier la cosmétique et la pharmaceutique.
