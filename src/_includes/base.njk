@@ -45,12 +45,13 @@
 </header>
 <div class="drawer" aria-hidden="true">
 <a href="/conviction.html"><span class="num">01</span> Conviction</a>
+<a href="/{{ exp[0].page }}.html"><span class="num">02</span> Expertises</a>
 <div class="drawer-sub">{% for e in exp %}
 <a href="/{{ e.page }}.html">{{ e.nom }}</a>{% endfor %}
 </div>
-<a href="/realisations.html"><span class="num">02</span> Réalisations</a>
-<a href="/equipe.html"><span class="num">03</span> Équipe</a>
-<a href="/contact.html"><span class="num">04</span> Contact</a>
+<a href="/realisations.html"><span class="num">03</span> Réalisations</a>
+<a href="/equipe.html"><span class="num">04</span> Équipe</a>
+<a href="/contact.html"><span class="num">05</span> Contact</a>
 </div>
 <main>
 {% block main %}{% endblock %}

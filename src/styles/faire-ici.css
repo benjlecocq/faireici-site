@@ -472,7 +472,7 @@ a.filter { display: inline-block; }
 .band { background: var(--ink-2); padding-block: clamp(64px,8vw,120px); }
 .cta-red { background: var(--accent); color: #fff; padding-block: clamp(64px,8vw,112px); text-align: center; }
 .cta-red + .site-foot { border-top: 0; }
-.cta-red h2 { font-family: var(--font-display); font-weight: 500; font-size: clamp(2.2rem,5.4vw,4.6rem); line-height: 1; letter-spacing: -0.03em; color: #fff; max-width: 16ch; margin-inline: auto; }
+.cta-red h2 { font-family: var(--font-display); font-weight: 500; font-size: clamp(2rem,4.2vw,3.6rem); line-height: 1; letter-spacing: -0.03em; color: #fff; max-width: 16ch; margin-inline: auto; }
 .cta-red p { color: #fff; font-size: clamp(1.05rem,1.3vw,1.2rem); line-height: 1.5; max-width: 48ch; margin: 22px auto 0; }
 .cta-red .bracket, .cta-red .brand-word, .cta-red em { color: #fff; }
 .cta-red .btn { margin-top: clamp(28px,3vw,40px); background: #fff; border-color: #fff; color: #141416; }
