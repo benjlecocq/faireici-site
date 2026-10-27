@@ -68,7 +68,7 @@ bodyPage: "reference"
 {% if d.contact_client %}<div class="ref-meta__cell"><dt>Contact client</dt><dd>{{ d.contact_client }}</dd></div>{% endif %}
 {% if d.localite %}<div class="ref-meta__cell"><dt>Localité</dt><dd>{{ d.localite }}</dd></div>{% endif %}
 </dl>
-{% if d.image %}<figure class="ref-media"><img src="{{ d.image | img }}" alt="{{ d.titre }}"></figure>{% if d.credit %}<p class="ref-credit">Photo : {% if d.credit_lien %}<a href="{{ d.credit_lien }}" target="_blank" rel="noopener">{{ d.credit }}</a>{% else %}{{ d.credit }}{% endif %}{% if 'CC BY-SA 2.5' in d.credit %} (<a href="https://creativecommons.org/licenses/by-sa/2.5/deed.fr" target="_blank" rel="noopener">voir la licence</a>){% endif %}</p>{% endif %}{% endif %}
+{% if d.image %}<figure class="ref-media"><img src="{{ d.image | img }}" alt="{{ d.titre }}"></figure>{% if d.credit %}<p class="ref-credit">Photo : {% if d.credit_lien %}<a href="{{ d.credit_lien }}" target="_blank" rel="noopener">{{ d.credit }}</a>{% else %}{{ d.credit }}{% endif %}{% set cc = d.credit | ccUrl %}{% if cc %} (<a href="{{ cc }}" target="_blank" rel="noopener">voir la licence</a>){% endif %}</p>{% endif %}{% endif %}
 </section>
 <section class="section section--tight">
 <div class="wrap ref-body">

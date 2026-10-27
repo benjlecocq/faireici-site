@@ -10,7 +10,8 @@ localite: "Font-Romeu, Les Angles"
 partenaires: "AID Observatoire"
 expertises:
   - diversification
-image: ""
+image: /assets/uploads/etude-filieres-economiques-pyrenees-catalanes.jpg
+credit: "« Font-Romeu-Odeillo-Via » par Grégory Coste"
 contexte: >-
   Composé de 19 communes et de près de 6 000 habitants, le territoire se
   caractérise par un environnement de montagne exceptionnel, une identité

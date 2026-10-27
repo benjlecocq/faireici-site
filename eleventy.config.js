@@ -40,6 +40,7 @@ module.exports = function (cfg) {
   const rawExp = it => { try { const v = matter(fs.readFileSync(it.inputPath, 'utf8')).data.expertises; return Array.isArray(v) ? v : (v ? String(v).split(/[,;]/).map(s => s.trim()) : []); } catch (e) { return []; } };
   const img = s => { let u = String(s || '').trim(); if (!u || /^https?:/i.test(u)) return u; u = u.replace(/^\.?\/?(src\/)?/, '/'); try { u = decodeURI(u); } catch (e) {} return encodeURI(u); };
   cfg.addFilter('img', img);
+  cfg.addFilter('ccUrl', s => { const m = String(s || '').match(/CC\s*(BY(?:-NC)?(?:-SA|-ND)?)\s*(\d\.\d)/i); return m ? 'https://creativecommons.org/licenses/' + m[1].toLowerCase() + '/' + m[2] + '/deed.fr' : ''; });
   const yearOf = it => Math.max(0, ...(String(it.data.annee || '').match(/\d{4}/g) || []).map(Number));
   cfg.addFilter('recent', (list, key, n = 3) => (list || []).filter(it => !key || rawExp(it).includes(key)).sort((a, b) => yearOf(b) - yearOf(a) || (a.data.ordre || 999) - (b.data.ordre || 999)).slice(0, n));
   cfg.addFilter('expCount', (list, key) => (list || []).filter(it => !key || rawExp(it).includes(key)).length);

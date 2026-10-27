@@ -12,7 +12,8 @@ expertises:
   - diversification
   - offre-accueil
   - attractivite
-image: ""
+image: /assets/uploads/feuille-de-route-economie-emploi-boucle-nord-de-seine.jpg
+credit: "« Gennevilliers port » par Remi Jouan, disponible sous licence CC BY-SA 3.0"
 contexte: >-
   Tandis que l'EPT Boucle Nord de Seine entre dans sa dixième année, un nouvel
   exécutif est installé. L'occasion est donc parfaite pour :
