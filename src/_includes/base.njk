@@ -15,7 +15,7 @@
 <meta property="og:image" content="{{ site.url }}{{ seo.image or '/assets/vue-territoire.jpg' }}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0d0d0e">
-<script>try{if(localStorage.getItem("fi-theme")==="light")document.documentElement.dataset.theme="light"}catch(e){}</script>
+<script>try{localStorage.removeItem("fi-theme")}catch(e){}</script>
 <link rel="icon" href="/assets/logo-v2.png">
 {% block head %}{% endblock %}
 <link rel="stylesheet" href="/styles/faire-ici.css">
@@ -91,7 +91,7 @@
 </div>
 </div>
 </footer>
-<script>(function(){var r=document.documentElement,b=document.querySelector(".theme-toggle"),m=document.querySelector('meta[name="theme-color"]');function s(){var l=r.dataset.theme==="light";b.setAttribute("aria-label",l?"Passer en thème sombre":"Passer en thème clair");m&&m.setAttribute("content",l?"#f4f0eb":"#0d0d0e");}s();b.addEventListener("click",function(){var l=r.dataset.theme!=="light";if(l)r.dataset.theme="light";else delete r.dataset.theme;try{localStorage.setItem("fi-theme",l?"light":"dark")}catch(e){}s();});})();</script>
+<script>(function(){var r=document.documentElement,b=document.querySelector(".theme-toggle"),m=document.querySelector('meta[name="theme-color"]');function s(){var l=r.dataset.theme==="light";b.setAttribute("aria-label",l?"Passer en thème sombre":"Passer en thème clair");m&&m.setAttribute("content",l?"#f4f0eb":"#0d0d0e");}s();b.addEventListener("click",function(){var l=r.dataset.theme!=="light";if(l)r.dataset.theme="light";else delete r.dataset.theme;s();});})();</script>
 <script src="/scripts/site.js"></script>
 {% block scripts %}{% endblock %}
 </body>
