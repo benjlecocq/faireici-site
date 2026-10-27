@@ -100,6 +100,16 @@ collections:
         name: "image"
         widget: "image"
         hint: "Format paysage, 1600 px de large conseillé"
+      - label: "Crédit photo (si photo sous licence)"
+        name: "credit"
+        widget: "string"
+        required: false
+        hint: "Ex. « Vue de Font-Romeu » par Jean Dupont, disponible sous licence CC BY-SA 2.5"
+      - label: "Lien vers la photo d'origine (facultatif)"
+        name: "credit_lien"
+        widget: "string"
+        required: false
+        hint: "Adresse de la page où vous avez trouvé la photo (Wikimedia Commons…)"
       - label: "Contexte & objectifs"
         name: "contexte"
         widget: "markdown"

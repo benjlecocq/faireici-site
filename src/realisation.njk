@@ -22,6 +22,10 @@ bodyPage: "reference"
 .ref-meta dd { margin: 5px 0 0; font-size: 0.98rem; color: var(--paper); }
 .ref-media { margin-top: clamp(22px,3vw,34px); border-radius: 8px; overflow: hidden; background: var(--ink-2); }
 .ref-media img { display: block; width: 100%; height: auto; }
+.ref-media { margin-inline: 0; margin-bottom: 0; }
+.ref-credit { margin-top: 10px; font-size: 0.78rem; line-height: 1.4; color: var(--muted); }
+.ref-credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.ref-credit a:hover { color: var(--accent); }
 .ref-body { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px,5vw,72px); align-items: start; }
 .ref-body h2 { font-family: var(--font-mono); font-weight: 400; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
 .ref-body p { color: var(--paper-dim); font-size: 1.0625rem; line-height: 1.6; }
@@ -64,7 +68,7 @@ bodyPage: "reference"
 {% if d.contact_client %}<div class="ref-meta__cell"><dt>Contact client</dt><dd>{{ d.contact_client }}</dd></div>{% endif %}
 {% if d.localite %}<div class="ref-meta__cell"><dt>Localité</dt><dd>{{ d.localite }}</dd></div>{% endif %}
 </dl>
-{% if d.image %}<div class="ref-media"><img src="{{ d.image | img }}" alt="{{ d.titre }}"></div>{% endif %}
+{% if d.image %}<figure class="ref-media"><img src="{{ d.image | img }}" alt="{{ d.titre }}"></figure>{% if d.credit %}<p class="ref-credit">Photo : {% if d.credit_lien %}<a href="{{ d.credit_lien }}" target="_blank" rel="noopener">{{ d.credit }}</a>{% else %}{{ d.credit }}{% endif %}{% if 'CC BY-SA 2.5' in d.credit %} (<a href="https://creativecommons.org/licenses/by-sa/2.5/deed.fr" target="_blank" rel="noopener">voir la licence</a>){% endif %}</p>{% endif %}{% endif %}
 </section>
 <section class="section section--tight">
 <div class="wrap ref-body">
