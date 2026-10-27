@@ -85,7 +85,6 @@ bodyPage: "reference"
 <div class="ref-tags">{% for k in d.expertises %}{% for e in exp %}{% if e.key == k %}<a href="/{{ e.page }}.html">{{ e.nom }}</a>{% endif %}{% endfor %}{% endfor %}</div>
 <div class="ref-actions">
 {% if d.pdf %}<a class="btn" href="{{ d.pdf }}" target="_blank" rel="noopener">Télécharger la fiche PDF <span class="arrow">↓</span></a>{% endif %}
-<a class="btn btn--solid" href="/contact.html">Parlons de votre projet <span class="arrow">→</span></a>
 <a class="ref-back" href="/realisations.html">← Toutes les réalisations</a>
 </div>
 </div>

@@ -2,12 +2,11 @@
 ordre: 9
 titre: "Hub de l'ESS : préfiguration technique, économique et juridique du projet"
 slug: hub-ess-port-reunion
-client: "Ville du Port de la Réunion"
+client: "Ville du Port de la Réunion / Banque des Territoires"
 annee: "2021"
 budget: "19 550 €"
 contact_client: "Patrick Nativel"
 localite: "Le Port de la Réunion"
-partenaires: "Banque des Territoires"
 expertises:
   - diversification
   - offre-accueil
