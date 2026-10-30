@@ -21,8 +21,8 @@ slug:
   encoding: "ascii"
   clean_accents: true
   sanitize_replacement: "-"
-site_url: "https://faireici-site.pages.dev"
-display_url: "https://faireici-site.pages.dev"
+site_url: "https://www.faireici.com"
+display_url: "https://www.faireici.com"
 logo_url: "/assets/logo-v3.png"
 media_folder: "src/assets/uploads"
 public_folder: "/assets/uploads"
