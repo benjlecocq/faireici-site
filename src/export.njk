@@ -1,0 +1,73 @@
+---
+permalink: "admin/export/index.html"
+eleventyExcludeFromCollections: true
+---
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="robots" content="noindex">
+<title>Exports des références - fair[e]ici</title>
+<link rel="icon" href="/assets/logo-v2.png">
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@600&family=Space+Grotesk:wght@500;600&family=Space+Mono&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#141416;--txt:#2b2825;--mut:#6b655f;--line:#ddd8d3;--bg:#f6f3f0;--red:#d6433d}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-family:'Hanken Grotesk',system-ui,sans-serif;font-size:15px}
+a{color:var(--red)}a:hover{color:var(--ink)}
+.ex-wrap{max-width:1240px;margin:0 auto;padding:28px clamp(16px,3vw,40px) 80px}
+.ex-top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.ex-logo{font-family:'Source Code Pro',monospace;font-weight:600;font-size:22px;color:var(--red)}
+.ex-back{font-family:'Space Mono',monospace;font-size:13px}
+h1{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(28px,3vw,40px);letter-spacing:-.02em;color:var(--ink);margin:28px 0 6px}
+.ex-intro{color:var(--mut);margin:0 0 24px;max-width:70ch;line-height:1.5}
+.ex-panel{background:#fff;border:1px solid var(--line);border-radius:8px;padding:18px 20px;display:grid;gap:16px}
+.ex-row{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:end}
+.ex-field{display:grid;gap:6px}
+.ex-field span{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.ex-field select,.ex-field input{font:inherit;padding:9px 12px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink);min-width:150px}
+.ex-field--grow{flex:1 1 280px}.ex-field--grow input{width:100%}
+.ex-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.ex-btn{font:inherit;font-weight:500;padding:11px 18px;border-radius:999px;border:1px solid var(--ink);background:var(--ink);color:#fff;cursor:pointer}
+.ex-btn:hover{background:var(--red);border-color:var(--red)}
+.ex-btn--ghost{background:#fff;color:var(--ink)}
+.ex-btn:disabled{opacity:.4;cursor:not-allowed;background:var(--ink);color:#fff}
+.ex-count{font-family:'Space Mono',monospace;font-size:13px;color:var(--mut);margin-left:auto}
+.ex-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:8px;margin-top:18px;overflow:hidden}
+.ex-table th{font-family:'Space Mono',monospace;font-weight:400;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);background:#fbfaf8}
+.ex-table td{padding:11px 10px;border-bottom:1px solid #eee9e4;vertical-align:top;line-height:1.35}
+.ex-table tr:last-child td{border-bottom:0}
+.ex-table tr.off td{opacity:.45}
+.ex-table td.ex-c{width:36px}.ex-table input{width:18px;height:18px;accent-color:var(--red);cursor:pointer}
+.ex-client{font-weight:600;color:var(--ink)}
+.ex-nowrap{white-space:nowrap}
+.ex-tag{display:inline-block;font-size:12px;border:1px solid var(--line);border-radius:999px;padding:2px 8px;margin:0 4px 4px 0;color:var(--mut)}
+.ex-empty{padding:30px;text-align:center;color:var(--mut)}
+@media (max-width:800px){.ex-hide-s{display:none}.ex-count{margin-left:0;width:100%}}
+</style></head>
+<body>
+<div class="ex-wrap">
+<div class="ex-top"><span class="ex-logo">fair[e]ici!</span><a class="ex-back" href="/admin/">← Retour au back-office</a></div>
+<h1>Exports des références</h1>
+<p class="ex-intro">Filtrez, cochez les références voulues, puis exportez. Seules les lignes cochées et affichées sont exportées. Pour les PDF, choisissez « Enregistrer au format PDF » dans la fenêtre d'impression.</p>
+<div class="ex-panel">
+<div class="ex-row">
+<label class="ex-field"><span>Année de</span><select id="fFrom"></select></label>
+<label class="ex-field"><span>à</span><select id="fTo"></select></label>
+<label class="ex-field"><span>Expertise</span><select id="fExp"></select></label>
+<label class="ex-field ex-field--grow"><span>Titre de la page de garde</span><input id="fCover" type="text" value="Références" placeholder="Ex. Candidature - Ville de Mâcon"></label>
+</div>
+<div class="ex-actions">
+<button class="ex-btn ex-btn--ghost" id="bAll" type="button">Tout cocher</button>
+<button class="ex-btn ex-btn--ghost" id="bNone" type="button">Tout décocher</button>
+<span class="ex-count" id="count"></span>
+</div>
+<div class="ex-actions">
+<button class="ex-btn" id="bBook" type="button">Book PDF (page de garde + fiches)</button>
+<button class="ex-btn" id="bXls" type="button">Tableau Excel</button>
+<button class="ex-btn" id="bTab" type="button">Tableau PDF (A4 paysage)</button>
+</div>
+</div>
+<table class="ex-table"><thead><tr><th></th><th>Année</th><th>Client</th><th>Titre</th><th class="ex-hide-s">Lieu</th><th class="ex-hide-s">Expertises</th><th class="ex-hide-s">Montant</th></tr></thead><tbody id="rows"></tbody></table>
+</div>
+<script>window.EXPERTISES = {{ exp | expMap | safe }}; window.PROJETS = {{ collections.projets | projetsJson | safe }}; window.SITE = {{ { "url": site.url, "email": site.email, "tel": site.telephone_fixe_affiche } | json | safe }};</script>
+<script src="/scripts/realisations.js"></script>
+<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+<script src="/scripts/export.js"></script>
+</body></html>

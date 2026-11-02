@@ -30,7 +30,7 @@ collections:
   - name: "realisations"
     label: "Réalisations"
     label_singular: "réalisation"
-    description: "Chaque réalisation génère sa propre page (/realisations/…) et apparaît dans la galerie, les filtres et le book PDF."
+    description: "Chaque réalisation génère sa propre page (/realisations/…) et apparaît dans la galerie, les filtres et le book PDF. Exports PDF / Excel : bouton rouge en bas à droite, ou /admin/export/"
     folder: "src/realisations"
     extension: "md"
     format: "frontmatter"
