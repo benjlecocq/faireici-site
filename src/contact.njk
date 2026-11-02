@@ -112,7 +112,7 @@ bodyPage: "contact"
       </div>
       <hr class="hairline mt-l">
       <div class="mt-l">
-        {% endraw %}{% for a in site.adresses %}<div class="cinfo"><span class="cinfo__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><div><p class="cinfo__k">{{ a.libelle }}</p><p class="contact-addr">{{ a.rue }}<br>{{ a.code_postal }} {{ a.ville }}{% if a.telephone_affiche %}<br><a href="tel:{{ a.telephone or a.telephone_affiche | replace(' ', '') }}">{{ a.telephone_affiche }}</a>{% endif %}</p></div></div>
+        {% endraw %}{% for a in site.adresses %}<div class="cinfo"><span class="cinfo__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><div><p class="cinfo__k">{{ a.libelle }}</p><p class="contact-addr">{{ a.rue }}<br>{{ a.code_postal }} {{ a.ville }}{% if a.telephone_affiche %}<br>Tél. <a href="tel:{{ a.telephone or a.telephone_affiche | replace(' ', '') }}">{{ a.telephone_affiche }}</a>{% endif %}</p></div></div>
 {% endfor %}{% raw %}
       </div>
     </div>
