@@ -21,8 +21,8 @@ slug:
   encoding: "ascii"
   clean_accents: true
   sanitize_replacement: "-"
-site_url: "https://www.faireici.com"
-display_url: "https://www.faireici.com"
+site_url: "https://faireici-site.pages.dev"
+display_url: "https://faireici-site.pages.dev"
 logo_url: "/assets/logo-v3.png"
 media_folder: "src/assets/uploads"
 public_folder: "/assets/uploads"
@@ -695,12 +695,12 @@ collections:
             name: "telephone_fixe_affiche"
             widget: "string"
             required: false
-            default: "09 75 70 40 16"
+            default: "06 24 73 17 85"
           - label: "Téléphone fixe (format international)"
             name: "telephone_fixe"
             widget: "string"
             required: false
-            default: "+33975704016"
+            default: "+33624731785"
           - label: "Adresses"
             name: "adresses"
             widget: "list"
@@ -720,3 +720,12 @@ collections:
               - label: "Ville"
                 name: "ville"
                 widget: "string"
+              - label: "Téléphone (affiché)"
+                name: "telephone_affiche"
+                widget: "string"
+                required: false
+              - label: "Téléphone (format international)"
+                name: "telephone"
+                widget: "string"
+                required: false
+                hint: "Ex. +33661739939"

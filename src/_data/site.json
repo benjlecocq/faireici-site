@@ -8,13 +8,19 @@
       "libelle": "Siège social",
       "rue": "334 Route de Montmay l'Étang",
       "code_postal": "69430",
-      "ville": "Quincié-en-Beaujolais"
+      "ville": "Quincié-en-Beaujolais",
+      "telephone_affiche": "06 24 73 17 85",
+      "telephone": "+33624731785"
     },
     {
       "libelle": "Établissement secondaire",
       "rue": "20 Rue Paul Cazeneuve",
       "code_postal": "69008",
-      "ville": "Lyon"
+      "ville": "Lyon",
+      "telephone_affiche": "06 61 73 99 39",
+      "telephone": "+33661739939"
     }
-  ]
+  ],
+  "telephone_fixe_affiche": "06 24 73 17 85",
+  "telephone_fixe": "+33624731785"
 }
