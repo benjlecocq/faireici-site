@@ -5,7 +5,7 @@ slug: aide-innovation-plainedelain
 client: Communauté de Communes de la Plaine de l'Ain (CCPA)
 annee: "2021"
 budget: 15 000 € HT
-contact_client: Amandine Arrigoni
+contact_client: Amandine Arrigonni
 localite: Chazey-sur-Ain (01)
 expertises:
   - ess
