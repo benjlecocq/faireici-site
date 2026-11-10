@@ -8,7 +8,7 @@ client: EPT Boucle Nord de Seine
 annee: "2026"
 budget: 48 890 € HT
 contact_client: Christian Bitaud
-localite: Gennevilliers
+localite: Gennevilliers (92)
 partenaires: l'Institut Paris Région, Utopies / Boris Chabanel et Sennse
 expertises:
   - diversification
