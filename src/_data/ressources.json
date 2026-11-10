@@ -27,20 +27,20 @@
   "seo_description": "fair[e]ici est animée par Vincent Lecomte et Benjamin Lecocq, deux associés aux expertises complémentaires en développement local et développement économique territorial.",
   "partenaires": [
     {
-      "nom": "Espelia",
-      "specialite": "Conseil pour la performance publique",
-      "url": "https://www.espelia.fr/",
-      "logo": "/assets/partners/espelia.png"
-    },
-    {
       "nom": "360",
       "specialite": "Programmation et urbanisme",
       "url": "https://www.360-agence.fr/",
       "logo": "/assets/partners/360.jpg"
     },
     {
+      "nom": "Espelia",
+      "specialite": "Conseil pour la performance publique",
+      "url": "https://www.espelia.fr/",
+      "logo": "/assets/partners/espelia.png"
+    },
+    {
       "nom": "AID",
-      "specialite": "Planification",
+      "specialite": "Planification et urbanisme commercial",
       "url": "https://aidobservatoire.fr/",
       "logo": "/assets/partners/aid.png"
     },
@@ -57,16 +57,16 @@
       "logo": "/assets/partners/alpicite.png"
     },
     {
-      "nom": "Ville & Améngament Durable (VAD)",
-      "specialite": "Réseau des professionnels du bâtiment et de l'aménagement durable",
-      "url": "https://www.ville-amenagement-durable.org/",
-      "logo": "/assets/uploads/ville-amenagement-durable-7e284.svg"
-    },
-    {
       "nom": "Cérice Greze Conseil",
       "logo": "/assets/uploads/signature-hd.png",
       "url": "https://elycoop.fr/fiche-prestataire/cerice-greze/",
       "specialite": "Facilitation territoriale et création sonore"
+    },
+    {
+      "nom": "Ville & Améngament Durable (VAD)",
+      "specialite": "Réseau des professionnels du bâtiment et de l'aménagement durable",
+      "url": "https://www.ville-amenagement-durable.org/",
+      "logo": "/assets/uploads/ville-amenagement-durable-7e284.svg"
     }
   ]
 }
