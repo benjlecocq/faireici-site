@@ -6,7 +6,7 @@ slug: prospective-emploi-numerique-plaine-commune
 client: GIP Maison de l'Emploi du territoire de Plaine Commune
 annee: "2024"
 budget: 16 875 € HT
-contact_client: Charlotte Simon
+contact_client: Samira Ouardi
 localite: Saint-Denis (93)
 expertises:
   - diversification
