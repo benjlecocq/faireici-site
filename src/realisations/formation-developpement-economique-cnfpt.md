@@ -44,7 +44,7 @@ methodo: >-
 
   * témoignages extérieurs
 
-  * mise à disposition d'un sélection de ressources
+  * mise à disposition d'une sélection de ressources
 
   * ...
 ---
