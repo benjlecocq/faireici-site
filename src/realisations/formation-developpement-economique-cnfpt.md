@@ -38,7 +38,7 @@ methodo: >-
 
   * cadrage théorique et notions clés
 
-  * exercices pratiques
+  * exercices et cas pratiques
 
   * retours d'expériences 
 
