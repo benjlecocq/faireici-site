@@ -9,8 +9,6 @@ contact_client: Aline Landier
 localite: Chartres (28)
 partenaires: Impulse Partners
 expertises:
-  - attractivite
-  - diversification
   - ess
 image: /assets/uploads/chartres.jpg
 contexte: >-
