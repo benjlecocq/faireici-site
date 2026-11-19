@@ -8,7 +8,6 @@ annee: "2023"
 budget: 4 400 € HT
 localite: Castelnaud-la-Chapelle (24)
 expertises:
-  - offre-accueil
   - programmation
   - ess
 image: /assets/uploads/studio-josephine-parc-josephine-baker.jpg
