@@ -4,6 +4,7 @@ titre: Etude d'opportunité pour la mise en place d'une Ecole de Production
 slug: ecole-de-production-nogent-le-rotrou
 client: Nogent-le-Rotrou (28)
 annee: "2023"
+budget: 12 880 € HT
 contact_client: Jérôme Clément
 localite: Nogent-le-Rotrou (28)
 partenaires: Modaal
